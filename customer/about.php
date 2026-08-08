@@ -5,85 +5,10 @@
 <title>About - Cut and Coat</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-body{
-margin:0;
-background:#f4fdf9;
-font-family:'Montserrat', sans-serif;
-padding:40px;
-}
-
-/* ✅ PREMIUM BACK BUTTON */
-.back-btn{
-display:inline-flex;
-align-items:center;
-gap:8px;
-margin-bottom:20px;
-text-decoration:none;
-color:#064e3b;
-font-weight:600;
-padding:8px 14px;
-border-radius:10px;
-background:white;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-transition:0.3s ease;
-}
-
-.back-btn:hover{
-background:#10b981;
-color:white;
-transform:translateX(-5px);
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* Arrow animation */
-.back-btn span{
-display:inline-block;
-transition:0.3s ease;
-}
-
-.back-btn:hover span{
-transform:translateX(-3px);
-}
-
-.container{
-max-width:900px;
-margin:auto;
-background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
-
-h1{
-font-family:'Playfair Display', serif;
-color:#064e3b;
-}
-
-h2{
-font-family:'Playfair Display', serif;
-color:#064e3b;
-margin-top:20px;
-}
-
-h3{
-font-family:'Playfair Display', serif;
-color:#10b981;
-margin-top:15px;
-}
-
-p{
-line-height:1.8;
-}
-
-a{
-color:#10b981;
-}
-</style>
+<link rel="stylesheet" href="assets/css/customer.css">
 </head>
 
-<body>
+<body class="about-page">
 
 <div class="container">
 
