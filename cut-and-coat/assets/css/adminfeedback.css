@@ -1,0 +1,144 @@
+/* ===== BASE ===== */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f4fdf9;
+}
+
+/* ================= TOPBAR ================= */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    z-index: 1000;
+}
+
+.topbar h3 {
+    font-family: 'Playfair Display', serif;
+    color: #064e3b;
+    margin: 0;
+    font-size: 18px;
+}
+
+
+/* ===== MAIN ===== */
+.main {
+    position: fixed;
+    top: 70px;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    padding: 25px;
+    overflow-y: auto;
+    transition: 0.3s;
+    animation: fadeIn 0.5s ease;
+}
+
+.main.expanded {
+    left: 80px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #064e3b;
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+/* ===== TABLE ===== */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    margin-left: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    overflow: hidden;
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(25px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+th {
+    background: #065f46;
+    color: white;
+    padding: 12px 10px;
+    font-weight: 600;
+    text-align: left;
+}
+
+th:first-child,
+td:first-child {
+    text-align: center;
+    width: 120px;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #f1f1f1;
+    vertical-align: top;
+    transition: 0.25s;
+}
+
+tr {
+    transition: 0.25s ease;
+}
+
+tr:hover {
+    background: #f0fdf8;
+    transform: scale(1.01);
+}
+
+/* ===== STARS ===== */
+.stars {
+    color: #fbbf24;
+    letter-spacing: 2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:900px) {
+    .table-container {
+        display: none;
+    }
+
+    .main {
+        left: 60px;
+    }
+}

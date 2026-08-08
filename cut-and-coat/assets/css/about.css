@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    background: #f4fdf9;
+    font-family: 'Montserrat', sans-serif;
+    padding: 40px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: #064e3b;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: #064e3b;
+    margin-top: 20px;
+}
+
+h3 {
+    font-family: 'Playfair Display', serif;
+    color: #10b981;
+    margin-top: 15px;
+}
+
+p {
+    line-height: 1.8;
+}
+
+a {
+    color: #10b981;
+}

@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Maria",
+        "age": "25",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-01",
+        "skills": "Nail Art",
+        "image": "assets\/staff\/staff1.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "John",
+        "age": "26",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-01",
+        "skills": "Gel",
+        "image": "assets\/staff\/staff2.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Angela",
+        "age": "24",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-01",
+        "skills": "Spa",
+        "image": "assets\/staff\/staff3.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Mark",
+        "age": "28",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-01",
+        "skills": "Acrylic",
+        "image": "assets\/staff\/staff4.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Jasmine",
+        "age": "23",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-02",
+        "skills": "Nail Art",
+        "image": "assets\/staff\/staff5.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Carlo",
+        "age": "29",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-02",
+        "skills": "Gel",
+        "image": "assets\/staff\/staff6.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Aira",
+        "age": "22",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-02",
+        "skills": "Spa",
+        "image": "assets\/staff\/staff7.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Kevin",
+        "age": "30",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-02",
+        "skills": "Acrylic",
+        "image": "assets\/staff\/staff8.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Trisha",
+        "age": "27",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-03",
+        "skills": "Nail Art",
+        "image": "assets\/staff\/staff9.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Paolo",
+        "age": "31",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-03",
+        "skills": "Gel",
+        "image": "assets\/staff\/staff10.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Nicole",
+        "age": "26",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-03",
+        "skills": "Spa",
+        "image": "assets\/staff\/staff11.jpg",
+        "status": "Available"
+    },
+    {
+        "name": "Joshua",
+        "age": "28",
+        "contact": "0912-345-6789",
+        "address": "Quezon City",
+        "joined": "2026-08-03",
+        "skills": "Acrylic",
+        "image": "assets\/staff\/staff12.jpg",
+        "status": "Available"
+    }
+]

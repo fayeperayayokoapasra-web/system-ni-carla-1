@@ -1,0 +1,705 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent page scrolling */
+    font-family: 'Montserrat', sans-serif;
+    background: #f4fdf9;
+}
+
+@keyframes fadeInPage {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-box{
+    flex:1;
+
+    height:100%;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    box-sizing:border-box;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* ===== ORIGINAL CSS ===== */
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    z-index: 1001;
+}
+
+.topbar h3 {
+    font-family: 'Playfair Display', serif;
+    color: #064e3b;
+    margin: 0;
+    font-size: 18px;
+}
+
+
+/* MAIN MATCH */
+.main{
+    display:flex;
+    gap:20px;
+
+    margin-left:220px;
+    margin-top:65px;
+    padding:20px;
+
+    height:calc(100vh - 65px);
+
+    align-items:stretch;
+
+    overflow:hidden;
+
+    box-sizing:border-box;
+}
+
+.main.expanded {
+    margin-left: 60px;
+}
+
+.form-layout {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+}
+
+.form-box{
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    padding: 25px;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #064e3b;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #064e3b;
+}
+
+.required {
+    color: red;
+}
+
+.form-error {
+    color: #b91c1c;
+    margin: 10px 0 0;
+    font-size: 13px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.total-box {
+    background: #ecfdf5;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #065f46;
+    margin-bottom: 12px;
+}
+
+.service-select-toggle {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1fae5;
+    background: white;
+    color: #064e3b;
+    cursor: pointer;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 42px;
+    font-size: 14px;
+}
+
+.service-select-toggle:hover {
+    background: #f8faf5;
+}
+
+.service-select-toggle::after {
+    content: "▾";
+    font-size: 14px;
+    color: #064e3b;
+}
+
+.service-categories {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.service-category {
+    border-radius: 10px;
+    border: 1px solid #d1fae5;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.category-header {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    background: #f8faf5;
+    color: #064e3b;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.category-header:hover {
+    background: #f0fbf8;
+}
+
+.category-header::after {
+    content: "▾";
+    font-size: 14px;
+    color: #064e3b;
+}
+
+.category-services {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px 12px;
+    background: #fcfdf9;
+}
+
+.service-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border: 1px solid #d1fae5;
+    border-radius: 10px;
+    background: #fcfdf9;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.service-option span {
+    display: block;
+    line-height: 1.25;
+    font-size: 13px;
+    color: #064e3b;
+}
+
+.service-option input {
+    accent-color: #10b981;
+    width: 16px;
+    height: 16px;
+}
+
+@media (max-width: 900px) {
+    .service-checkboxes {
+        justify-content: flex-start;
+    }
+
+    .service-option {
+        max-width: 100%;
+    }
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg,#10b981,#059669);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.4);
+    transform: skewX(-25deg);
+    transition: 0.6s;
+}
+
+button:hover::before {
+    left: 125%;
+}
+
+.receipt {
+    display: none;
+
+    flex: 0 0 38%;
+    max-width: 38%;
+
+    height: 100%;
+
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    animation: fadeIn 0.8s ease;
+}
+
+.main.receipt-visible{
+    display:flex;
+    align-items:stretch;
+    gap:20px;
+}
+
+.main.receipt-visible .form-box{
+    flex:1;
+    max-width:none;
+}
+
+.main.receipt-visible .receipt{
+    display:block;
+}
+
+@media (max-width: 1100px) {
+    .main.receipt-visible .form-box,
+    .main.receipt-visible .receipt {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    .main.receipt-visible {
+        flex-direction: column;
+    }
+}
+
+.receipt h2 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: #064e3b;
+}
+
+.line {
+    border-bottom: 1px dashed #ccc;
+    margin: 10px 0;
+}
+
+.receipt p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+.receipt-services {
+    margin: 6px 0;
+}
+
+.receipt-services span {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #064e3b;
+    margin-bottom: 6px;
+}
+
+.receipt-services ul {
+    list-style: disc inside;
+    margin: 0;
+    padding-left: 18px;
+    color: #064e3b;
+    font-size: 14px;
+}
+
+.receipt-services ul li {
+    margin-bottom: 4px;
+}
+
+.total {
+    font-weight: bold;
+    color: #064e3b;
+}
+
+.submit-again {
+    margin-top: 15px;
+    background: linear-gradient(135deg,#059669,#047857);
+}
+
+.receipt-note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #065f46;
+}
+
+/* ✅ ADDED: STOP ALL ANIMATIONS AFTER SUBMIT */
+.no-anim * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    position: relative;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 400px;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 20px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    z-index: 2;
+}
+
+.modal-close-btn::before {
+    display: none;
+}
+
+.modal-close-btn:hover {
+    background: #fee2e2;
+    transform: none;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    gap: 6px;
+}
+
+.day {
+    padding: 10px;
+    border-radius: 8px;
+    background: #ecfdf5;
+    cursor: pointer;
+    text-align: center;
+}
+
+.day.unavailable {
+    background: #d1d5db;
+    color: #4b5563;
+    cursor: not-allowed;
+    opacity: 0.95;
+}
+
+.day.booked {
+    background: #ef4444;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.95;
+}
+
+.day.selected {
+    background: #10b981;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.time-input {
+    width: 100%;
+    margin: 10px 0 6px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1fae5;
+    color: #064e3b;
+}
+
+.available-times-text {
+    font-size: 13px;
+    color: #065f46;
+    margin-bottom: 10px;
+    min-height: 18px;
+}
+
+/* RECEIPT POPUP */
+.receipt-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.receipt-modal.show {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+.receipt-content {
+    background: #fff;
+    border-radius: 12px;
+    width: 700px; /* slightly compressed */
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    box-sizing: border-box;
+}
+.receipt-close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #fee2e2;
+    color: #b91c1c;
+    font-size: 20px;
+    cursor: pointer;
+}
+.receipt-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+.receipt-logo {
+    width: 82px;
+    height: 82px;
+    object-fit: contain;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    padding: 8px;
+}
+.receipt-content p span:last-child,
+.receipt-content .receipt-services ul {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+.receipt-content .receipt-services ul {
+    padding-left: 18px;
+}
+
+/* Align labels and values inside receipt popup */
+.receipt-content p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin: 8px 0;
+}
+.receipt-content p span:first-child {
+    color: #064e3b;
+    font-weight: 600;
+    min-width: 150px;
+    flex: 0 0 150px;
+}
+.receipt-content p span:last-child {
+    color: #064e3b;
+    font-weight: 700;
+    text-align: right;
+    margin-left: auto;
+    flex: 0 0 470px; /* wider right column */
+}
+
+/* Services layout: label left, list right */
+.receipt-content .receipt-services {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+.receipt-content .receipt-services > span {
+    min-width: 150px;
+    font-weight: 700;
+    color: #064e3b;
+}
+.receipt-content .receipt-services ul {
+    margin: 0;
+    padding-left: 4px;
+    flex: 0 0 130px; /* fixed column width for right-side list */
+    margin-left: auto; /* push to right column */
+    list-style-position: outside;
+    box-sizing: border-box;
+}
+.receipt-content .receipt-services ul.multi-column {
+    column-count: 2;
+    column-gap: 24px;
+}
+.receipt-content .receipt-services ul.multi-column li {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 6px;
+    break-inside: avoid;
+}
+.receipt-content .receipt-services ul li {
+    margin-bottom: 6px;
+    margin-left: auto;
+}
+
+@media (max-width: 600px) {
+    .receipt-content { width: 100%; padding: 16px; }
+    .receipt-close { right: 12px; top: 8px; }
+    .receipt-content h2 { font-size: 18px; }
+    .receipt-content p span:first-child { min-width: 120px; }
+    .receipt-content p span:last-child { display: block; width: auto; text-align: left; }
+    .receipt-content .receipt-services { flex-direction: column; }
+    .receipt-content .receipt-services > span { min-width: auto; }
+    .receipt-content .receipt-services ul { flex: none; margin-left: 0; padding-left: 18px; }
+}
+
+/* ===== CALENDAR HEADER (PROPER ALIGNMENT) ===== */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 0 5px;
+}
+
+/* CENTER MONTH TEXT */
+#monthTitle {
+    flex: 1;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    color: #064e3b;
+}
+
+/* SMALL BUTTONS */
+.calendar-header button {
+    background: #10b981;
+    border: none;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.15s ease;
+}
+
+/* SOFT HOVER */
+.calendar-header button:hover {
+    background: #059669;
+    transform: scale(1.03);
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg,#10b981,#059669);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}

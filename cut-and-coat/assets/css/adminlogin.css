@@ -1,0 +1,200 @@
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    background: url('salon.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* OVERLAY SAME AS INDEX */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(6,78,59,0.70);
+    z-index: -1;
+}
+
+/* ================= TOPBAR ================= */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    z-index: 1000;
+}
+
+/* ================= LOGIN BOX ================= */
+.box {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    animation: fadeUp 0.8s ease;
+    position: relative;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ✅ ULTRA CLEAN ARROW (NO GLOW, NO EFFECTS) */
+.back-btn {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: 25px;
+    color: #064e3b;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    filter: none;
+}
+
+/* REMOVE ALL STATES COMPLETELY */
+.back-btn:hover,
+.back-btn:active,
+.back-btn:focus {
+    background: none;
+    outline: none;
+    box-shadow: none;
+    filter: none;
+    opacity: 1;
+}
+
+/* LOGO */
+.logo {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* WELCOME TEXT */
+.welcome {
+    font-family: 'Playfair Display', serif;
+    color: #064e3b;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: #064e3b;
+    margin-bottom: 10px;
+}
+
+/* FORM */
+label {
+    display: block;
+    text-align: left;
+    font-size: 13px;
+    margin-top: 10px;
+    color: #064e3b;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 6px rgba(16,185,129,0.3);
+}
+
+/* PREMIUM BUTTON */
+button {
+    margin-top: 30px;
+    padding: 14px 35px;
+    background: linear-gradient(135deg,#10b981,#059669);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 20px rgba(16,185,129,0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* SHINE EFFECT */
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    transform: skewX(-25deg);
+    transition: 0.5s;
+}
+
+button:hover::before {
+    left: 125%;
+}
+
+button:hover {
+    transform: translateY(-2px) scale(1.03);
+    background: linear-gradient(135deg,#059669,#047857);
+}
+
+/* ERROR */
+.error {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+/* FORGOT PASSWORD */
+.forgot {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.forgot a {
+    color: #10b981;
+    text-decoration: none;
+}
+
+.forgot a:hover {
+    text-decoration: underline;
+}

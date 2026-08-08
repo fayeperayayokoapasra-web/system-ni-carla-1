@@ -1,0 +1,622 @@
+[
+    {
+        "name": "Maria Santos",
+        "phone": "0917-123-4567",
+        "staff": "Anna",
+        "service": "Gel Polish",
+        "datetime": "2026-04-01 10:00",
+        "type": "Online",
+        "payment": "GCash",
+        "status": "cancelled"
+    },
+    {
+        "name": "John Cruz",
+        "phone": "0918-123-4567",
+        "staff": "Kim",
+        "service": "Manicure",
+        "datetime": "2026-04-01 11:30",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Ana Reyes",
+        "phone": "0922-123-4567",
+        "staff": "Anna",
+        "service": "Pedicure",
+        "datetime": "2026-04-02 09:00",
+        "type": "Online",
+        "payment": "Card",
+        "status": "upcoming"
+    },
+    {
+        "name": "Mark Dela Cruz",
+        "phone": "0933-123-4567",
+        "staff": "Kim",
+        "service": "Nail Art",
+        "datetime": "2026-04-02 13:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Sofia Garcia",
+        "phone": "0944-123-4567",
+        "staff": "Anna",
+        "service": "Extension",
+        "datetime": "2026-04-03 10:30",
+        "type": "Online",
+        "payment": "Maya",
+        "status": "upcoming"
+    },
+    {
+        "name": "Luis Navarro",
+        "phone": "0955-123-4567",
+        "staff": "Kim",
+        "service": "Gel Polish",
+        "datetime": "2026-04-03 14:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Ella Cruz",
+        "phone": "0966-123-4567",
+        "staff": "Anna",
+        "service": "Manicure",
+        "datetime": "2026-04-04 09:30",
+        "type": "Online",
+        "payment": "GCash",
+        "status": "upcoming"
+    },
+    {
+        "name": "James Lim",
+        "phone": "0977-123-4567",
+        "staff": "Kim",
+        "service": "Pedicure",
+        "datetime": "2026-04-04 11:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Chloe Tan",
+        "phone": "0988-123-4567",
+        "staff": "Anna",
+        "service": "Nail Art",
+        "datetime": "2026-04-05 15:00",
+        "type": "Online",
+        "payment": "Card",
+        "status": "upcoming"
+    },
+    {
+        "name": "Miguel Torres",
+        "phone": "0999-123-4567",
+        "staff": "Kim",
+        "service": "Extension",
+        "datetime": "2026-04-05 16:30",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Princess Cruz",
+        "phone": "0919-234-5678",
+        "staff": "Anna",
+        "service": "Gel Polish",
+        "datetime": "2026-04-06 10:00",
+        "type": "Online",
+        "payment": "Maya",
+        "status": "upcoming"
+    },
+    {
+        "name": "Carlos Reyes",
+        "phone": "0920-345-6789",
+        "staff": "Kim",
+        "service": "Manicure",
+        "datetime": "2026-04-06 12:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Angel Dela Cruz",
+        "phone": "0931-456-7890",
+        "staff": "Anna",
+        "service": "Pedicure",
+        "datetime": "2026-04-07 09:30",
+        "type": "Online",
+        "payment": "GCash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Patrick Lim",
+        "phone": "0942-567-8901",
+        "staff": "Kim",
+        "service": "Nail Art",
+        "datetime": "2026-04-07 13:30",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Hannah Garcia",
+        "phone": "0953-678-9012",
+        "staff": "Anna",
+        "service": "Extension",
+        "datetime": "2026-04-08 10:15",
+        "type": "Online",
+        "payment": "Card",
+        "status": "upcoming"
+    },
+    {
+        "name": "Kevin Santos",
+        "phone": "0964-789-0123",
+        "staff": "Kim",
+        "service": "Gel Polish",
+        "datetime": "2026-04-08 11:45",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Liza Navarro",
+        "phone": "0975-890-1234",
+        "staff": "Anna",
+        "service": "Manicure",
+        "datetime": "2026-04-09 09:00",
+        "type": "Online",
+        "payment": "Maya",
+        "status": "upcoming"
+    },
+    {
+        "name": "Daniel Cruz",
+        "phone": "0986-901-2345",
+        "staff": "Kim",
+        "service": "Pedicure",
+        "datetime": "2026-04-09 12:30",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Mia Reyes",
+        "phone": "0997-012-3456",
+        "staff": "Anna",
+        "service": "Nail Art",
+        "datetime": "2026-04-10 14:00",
+        "type": "Online",
+        "payment": "GCash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Ethan Lim",
+        "phone": "0918-123-9876",
+        "staff": "Kim",
+        "service": "Extension",
+        "datetime": "2026-04-10 16:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Gel Manicure, Gel Pedicure, Gel Extensions",
+        "datetime": "2026-08-01 13:17",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Kim (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-02 13:22",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Gel Extensions",
+        "datetime": "2026-08-03 15:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Gel Extensions",
+        "datetime": "2026-08-03 15:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Gel Extensions",
+        "datetime": "2026-08-03 15:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-03 15:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-03 15:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-03 15:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Test",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Local Polish, Plain",
+        "datetime": "2026-08-01 12:00 PM",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Test",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Local Polish, Plain",
+        "datetime": "2026-08-01 12:00 PM",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Test",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Local Polish, Plain",
+        "datetime": "2026-08-01 12:00 PM",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-01 8:00 AM",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-01 8:00 AM",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-01 8:00 AM",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure",
+        "datetime": "2026-08-01 8:00 AM",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-01 8:00 AM",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure",
+        "datetime": "2026-08-01 8:00 AM",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Kim (Available)",
+        "service": "Classic Pedicure, Gel Manicure",
+        "datetime": "2026-08-02 07:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Kim (Available)",
+        "service": "Classic Pedicure, Gel Manicure",
+        "datetime": "2026-08-02 07:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Kim (Available)",
+        "service": "Classic Pedicure, Gel Manicure",
+        "datetime": "2026-08-02 07:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Kim (Available)",
+        "service": "Classic Pedicure, Gel Manicure",
+        "datetime": "2026-08-02 07:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-04 07:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Pedicure, Gel Manicure",
+        "datetime": "2026-08-02 08:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "Kim (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-02 09:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Classic Pedicure, Gel Manicure, Signature Massage",
+        "datetime": "2026-08-02 10:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Anna (Available)",
+        "service": "Gel Manicure, Gel Pedicure, Soft Gel Extension",
+        "datetime": "2026-08-02 11:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Kim (Available)",
+        "service": "Gel Removal",
+        "datetime": "2026-08-02 12:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Paolo (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure, Gel Removal, Spa Manicure, Spa Pedicure, Foot Spa, Deluxe Manicure, Deluxe Pedicure",
+        "datetime": "2026-08-06 07:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "John (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure, Gel Removal, Spa Manicure, Spa Pedicure, Foot Spa, Deluxe Manicure, Deluxe Pedicure",
+        "datetime": "2026-08-06 08:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Paolo (Available)",
+        "service": "Classic Manicure",
+        "datetime": "2026-08-06 09:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Kevin (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure, Gel Removal, Spa Manicure, Spa Pedicure, Foot Spa, Deluxe Manicure, Deluxe Pedicure",
+        "datetime": "2026-08-06 10:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Kevin (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure, Gel Removal, Spa Manicure, Spa Pedicure, Foot Spa, Deluxe Manicure, Deluxe Pedicure",
+        "datetime": "2026-08-06 10:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Kevin (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure, Gel Removal, Spa Manicure, Spa Pedicure, Foot Spa, Deluxe Manicure, Deluxe Pedicure",
+        "datetime": "2026-08-06 10:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Kevin (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-06 11:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Kevin (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-06 11:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Jasmine (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure, Gel Removal",
+        "datetime": "2026-08-06 12:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Aira (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure, Gel Removal, Spa Manicure, Spa Pedicure, Foot Spa, Deluxe Manicure, Deluxe Pedicure",
+        "datetime": "2026-08-06 13:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": null,
+        "service": "Classic Manicure, Classic Pedicure, French Polish, Soft Gel Extension, Plain, Chrome, Ombre, French Tip, Cat Eye, Glitter Design, 3D Nail Art, Marble Design, Foil Design",
+        "datetime": "2026-08-06 14:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Maria (Available)",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-06 15:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Carlo (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure, Gel Removal, Spa Manicure, Spa Pedicure, Foot Spa, Deluxe Manicure, Deluxe Pedicure",
+        "datetime": "2026-08-06 16:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Aira (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure, Gel Removal, Spa Manicure, Spa Pedicure, Foot Spa, Deluxe Manicure, Deluxe Pedicure",
+        "datetime": "2026-08-06 17:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "Nicole (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure",
+        "datetime": "2026-08-06 18:00",
+        "type": "Walk-In",
+        "payment": "Cash",
+        "status": "upcoming"
+    }
+]

@@ -1,0 +1,238 @@
+[
+    {
+        "id": "ManiPediGrid",
+        "title": "Manicure & Pedicure",
+        "services": [
+            {
+                "name": "Classic Manicure",
+                "price": "150",
+                "image": "assets\/nails\/classicmanicure.jpg"
+            },
+            {
+                "name": "Classic Pedicure",
+                "price": "180",
+                "image": "assets\/nails\/classicpedicure.jpg"
+            },
+            {
+                "name": "Gel Manicure",
+                "price": "499",
+                "image": "assets\/nails\/gelmanicure.jpg"
+            },
+            {
+                "name": "Gel Pedicure",
+                "price": "599",
+                "image": "assets\/nails\/gelpedicure.jpg"
+            },
+            {
+                "name": "Gel Removal",
+                "price": "100",
+                "image": "assets\/nails\/gelremoval.jpg"
+            },
+            {
+                "name": "Spa Manicure",
+                "price": "250",
+                "image": "assets\/spa\/spamanicure.jpg"
+            },
+            {
+                "name": "Spa Pedicure",
+                "price": "280",
+                "image": "assets\/spa\/spapedicure.jpg"
+            },
+            {
+                "name": "Foot Spa",
+                "price": "350",
+                "image": "assets\/spa\/footspa.jpg"
+            },
+            {
+                "name": "Deluxe Manicure",
+                "price": "350",
+                "image": "assets\/nails\/deluxemanicure.jpg"
+            },
+            {
+                "name": "Deluxe Pedicure",
+                "price": "380",
+                "image": "assets\/nails\/deluxepedicure.jpg"
+            }
+        ]
+    },
+    {
+        "id": "polishGrid",
+        "title": "Change Polish",
+        "services": [
+            {
+                "name": "Local Polish",
+                "price": "49",
+                "image": "assets\/nails\/localpolish.jpg"
+            },
+            {
+                "name": "Branded Polish",
+                "price": "79",
+                "image": "assets\/nails\/brandedpolish.jpg"
+            },
+            {
+                "name": "French Polish",
+                "price": "99",
+                "image": "assets\/nails\/frenchpolish.jpg"
+            },
+            {
+                "name": "Gel Polish Change",
+                "price": "199",
+                "image": "assets\/nails\/gelpolish.jpg"
+            },
+            {
+                "name": "Matte Polish",
+                "price": "89",
+                "image": "assets\/nails\/mattepolish.jpg"
+            }
+        ]
+    },
+    {
+        "id": "extensionsGrid",
+        "title": "Extensions",
+        "services": [
+            {
+                "name": "Soft Gel Extension",
+                "price": "799",
+                "image": "assets\/nails\/softgel.jpg"
+            },
+            {
+                "name": "Soft Gel Removal",
+                "price": "300",
+                "image": "assets\/nails\/softremoval.jpg"
+            },
+            {
+                "name": "Repair per nail",
+                "price": "79",
+                "image": "assets\/nails\/repair.jpg"
+            },
+            {
+                "name": "Acrylic Extension",
+                "price": "899",
+                "image": "assets\/nails\/acrylic.jpg"
+            },
+            {
+                "name": "Gel Refill",
+                "price": "499",
+                "image": "assets\/nails\/refill.jpg"
+            }
+        ]
+    },
+    {
+        "id": "nailartGrid",
+        "title": "Nail Art",
+        "services": [
+            {
+                "name": "Plain",
+                "price": "100",
+                "image": "assets\/nails\/plain.jpg"
+            },
+            {
+                "name": "Chrome",
+                "price": "150",
+                "image": "assets\/nails\/chrome.jpg"
+            },
+            {
+                "name": "Ombre",
+                "price": "150",
+                "image": "assets\/nails\/ombre.jpg"
+            },
+            {
+                "name": "French Tip",
+                "price": "100",
+                "image": "assets\/nails\/frenchtip.jpg"
+            },
+            {
+                "name": "Cat Eye",
+                "price": "150",
+                "image": "assets\/nails\/cateye.jpg"
+            },
+            {
+                "name": "Glitter Design",
+                "price": "120",
+                "image": "assets\/nails\/glitter.jpg"
+            },
+            {
+                "name": "3D Nail Art",
+                "price": "200",
+                "image": "assets\/nails\/3d.jpg"
+            },
+            {
+                "name": "Marble Design",
+                "price": "180",
+                "image": "assets\/nails\/marble.jpg"
+            },
+            {
+                "name": "Foil Design",
+                "price": "130",
+                "image": "assets\/nails\/foil.jpg"
+            },
+            {
+                "name": "Minimalist Art",
+                "price": "110",
+                "image": "assets\/nails\/minimalist.jpg"
+            }
+        ]
+    },
+    {
+        "id": "massageGrid",
+        "title": "Massage",
+        "services": [
+            {
+                "name": "Classic Massage",
+                "price": "399",
+                "image": "assets\/massage\/classicmassage.jpg"
+            },
+            {
+                "name": "Signature Massage",
+                "price": "499",
+                "image": "assets\/massage\/signature.jpg"
+            },
+            {
+                "name": "Foot Massage",
+                "price": "299",
+                "image": "assets\/massage\/footmassage.jpg"
+            },
+            {
+                "name": "Back Massage",
+                "price": "349",
+                "image": "assets\/massage\/back.jpg"
+            },
+            {
+                "name": "Head Massage",
+                "price": "199",
+                "image": "assets\/massage\/head.jpg"
+            }
+        ]
+    },
+    {
+        "id": "addonsGrid",
+        "title": "Add-ons",
+        "services": [
+            {
+                "name": "Warm Stone",
+                "price": "300",
+                "image": "assets\/massage\/warmstone.jpg"
+            },
+            {
+                "name": "Ventosa",
+                "price": "200",
+                "image": "assets\/massage\/ventosa.jpg"
+            },
+            {
+                "name": "Hot Compress",
+                "price": "150",
+                "image": "assets\/massage\/compress.jpg"
+            },
+            {
+                "name": "Aromatherapy Oil",
+                "price": "180",
+                "image": "assets\/massage\/aroma.jpg"
+            },
+            {
+                "name": "Foot Scrub",
+                "price": "120",
+                "image": "assets\/spa\/scrub.jpg"
+            }
+        ]
+    }
+]

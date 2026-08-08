@@ -1,0 +1,837 @@
+{
+    "totalSales": 372547,
+    "records": [
+        {
+            "type": "Online",
+            "payment": "GCash",
+            "amount": 499
+        },
+        {
+            "type": "Online",
+            "payment": "Maya",
+            "amount": 599
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 180
+        },
+        {
+            "type": "Online",
+            "payment": "Card",
+            "amount": 799
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 150
+        },
+        {
+            "type": "Online",
+            "payment": "Maya",
+            "amount": 300
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 400
+        },
+        {
+            "type": "Online",
+            "payment": "GCash",
+            "amount": 499
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 180
+        },
+        {
+            "type": "Online",
+            "payment": "Card",
+            "amount": 599
+        },
+        {
+            "type": "Online",
+            "payment": "GCash",
+            "amount": 799
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 300
+        },
+        {
+            "type": "Online",
+            "payment": "Maya",
+            "amount": 499
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Card",
+            "amount": 150
+        },
+        {
+            "type": "Online",
+            "payment": "GCash",
+            "amount": 599
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 2550
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 650
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 1500
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 1500
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 1500
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 650
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 650
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 650
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 479
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 479
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 479
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 150
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 150
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 679
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 679
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 679
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 679
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 679
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330,
+            "date": "2026-08-02"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 1178,
+            "date": "2026-08-02"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 1897,
+            "date": "2026-08-02"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 100,
+            "date": "2026-08-02"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 1198,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3048,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3048,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 2968,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 2968,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4064,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4064,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4064,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4064,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4064,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4064,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4064,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4064,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4064,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 4642,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 6431,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 6431,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 5663,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 5663,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 6032,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-05"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3653,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3273,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 150,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 1528,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 2508,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 3138,
+            "date": "2026-08-06"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 829,
+            "date": "2026-08-06"
+        }
+    ]
+}
