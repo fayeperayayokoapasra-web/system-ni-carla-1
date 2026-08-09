@@ -284,7 +284,7 @@ document.getElementById("fullcode").value = code;
 
 <?php if($success !== ""): ?>
 <script>
-    setTimeout(function(){ window.location.href = 'customerlogin.php?mode=login'; }, 2500);
+    setTimeout(function(){ window.location.href = 'customerlogin.php'; }, 2500);
 </script>
 <?php endif; ?>
 
