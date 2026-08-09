@@ -2,6 +2,31 @@
 session_start();
 
 $message = "";
+$accountsFile = __DIR__ . '/accounts_data.json';
+
+function loadCustomerAccounts($file){
+    if(!file_exists($file)){
+        return [];
+    }
+    $data = json_decode(file_get_contents($file), true);
+    return is_array($data) ? $data : [];
+}
+
+function saveCustomerAccounts($file, $accounts){
+    if(!is_dir(dirname($file)) && dirname($file) !== ''){
+        mkdir(dirname($file), 0777, true);
+    }
+    file_put_contents($file, json_encode(array_values($accounts), JSON_PRETTY_PRINT));
+}
+
+function findAccountByEmail($accounts, $email){
+    foreach($accounts as $account){
+        if(isset($account['email']) && strtolower($account['email']) === strtolower($email)){
+            return $account;
+        }
+    }
+    return null;
+}
 
 /* GET CONTACT NUMBER */
 $contact = isset($_SESSION['pending_user']['contact']) 
@@ -17,12 +42,33 @@ if(isset($_POST['verify'])){
     $input = $_POST['code'];
 
     if($input === $_SESSION['otp']){
+        $pending = $_SESSION['pending_user'] ?? null;
 
-        /* LOGIN USER */
-        $_SESSION['customer'] = $_SESSION['pending_user']['email'];
+        if(!is_array($pending) || empty($pending['email'])){
+            $message = "Registration session expired. Please try again.";
+        } else {
+            $accounts = loadCustomerAccounts($accountsFile);
+            $existing = findAccountByEmail($accounts, $pending['email']);
 
-        header("Location: customerdashboard.php");
-        exit();
+            if($existing === null){
+                $accounts[] = [
+                    'name' => $pending['name'],
+                    'contact' => $pending['contact'],
+                    'email' => $pending['email'],
+                    'password' => password_hash($pending['password'], PASSWORD_DEFAULT),
+                    'created_at' => date('Y-m-d H:i:s')
+                ];
+                saveCustomerAccounts($accountsFile, $accounts);
+            }
+
+            /* LOGIN USER */
+            $_SESSION['customer'] = $pending['email'];
+            unset($_SESSION['pending_user']);
+            unset($_SESSION['otp']);
+
+            header("Location: customerdashboard.php");
+            exit();
+        }
 
     } else {
         $message = "Invalid OTP code!";

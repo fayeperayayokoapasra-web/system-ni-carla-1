@@ -8,8 +8,6 @@
             </div>
         </div>
 
-        <button class="toggle-btn" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
-
         <nav class="sidebar-nav">
             <a href="customerdashboard.php"><span>Dashboard</span></a>
             <a href="customerreservations.php"><span>My Reservations</span></a>

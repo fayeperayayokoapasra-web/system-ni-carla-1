@@ -2,6 +2,28 @@
 session_start();
 
 $message = "";
+$accountsFile = __DIR__ . '/accounts_data.json';
+
+function loadCustomerAccounts($file){
+    if(!file_exists($file)){
+        return [];
+    }
+    $data = json_decode(file_get_contents($file), true);
+    return is_array($data) ? $data : [];
+}
+
+function saveCustomerAccounts($file, $accounts){
+    file_put_contents($file, json_encode(array_values($accounts), JSON_PRETTY_PRINT));
+}
+
+function findAccountByEmail($accounts, $email){
+    foreach($accounts as $account){
+        if(isset($account['email']) && strtolower($account['email']) === strtolower($email)){
+            return $account;
+        }
+    }
+    return null;
+}
 
 /* SWITCH BETWEEN REGISTER & LOGIN */
 $mode = isset($_GET['mode']) ? $_GET['mode'] : "register";
@@ -9,43 +31,61 @@ $mode = isset($_GET['mode']) ? $_GET['mode'] : "register";
 /* ================= REGISTER ================= */
 if(isset($_POST['register'])){
 
-    $name = $_POST['name'];
-    $contact = $_POST['contact'];
-    $email = $_POST['email'];
+    $name = trim($_POST['name']);
+    $contact = trim($_POST['contact']);
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm = $_POST['confirm'];
 
     if($password !== $confirm){
         $message = "Passwords do not match!";
     } else {
+        $accounts = loadCustomerAccounts($accountsFile);
 
-        $_SESSION['pending_user'] = [
-            "name"=>$name,
-            "contact"=>$contact,
-            "email"=>$email,
-            "password"=>$password
-        ];
+        if(findAccountByEmail($accounts, $email) !== null){
+            $message = "This email is already registered. Please log in instead.";
+        } else {
+            $_SESSION['pending_user'] = [
+                "name" => $name,
+                "contact" => $contact,
+                "email" => $email,
+                "password" => $password
+            ];
 
-        $_SESSION['otp'] = "123456";
+            $_SESSION['otp'] = "123456";
 
-        header("Location: customerverification.php");
-        exit();
+            header("Location: customerverification.php");
+            exit();
+        }
     }
 }
 
 /* ================= LOGIN ================= */
 if(isset($_POST['login'])){
 
-    $email = $_POST['login_email'];
+    $email = trim($_POST['login_email']);
     $password = $_POST['login_password'];
+    $accounts = loadCustomerAccounts($accountsFile);
+    $account = findAccountByEmail($accounts, $email);
 
-    if($email == "cutandcoat@gmail.com" && $password == "123"){
-        $_SESSION['customer'] = $email;
-        header("Location: customerdashboard.php");
-        exit();
-    } else {
-        $message = "Invalid login credentials!";
+    if($account !== null){
+        $storedPassword = $account['password'] ?? '';
+        $authenticated = false;
+
+        if(password_verify($password, $storedPassword)){
+            $authenticated = true;
+        } elseif($password === $storedPassword) {
+            $authenticated = true;
+        }
+
+        if($authenticated){
+            $_SESSION['customer'] = $email;
+            header("Location: customerdashboard.php");
+            exit();
+        }
     }
+
+    $message = "Invalid login credentials!";
 }
 ?>
 

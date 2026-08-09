@@ -27,7 +27,7 @@
 
 <div class="content">
 
-<img src="assets/logo.jpg" class="center-logo">
+<img src="assets/cutandcoatFiles/logo.jpg" class="center-logo">
 
 <h1>Cut & Coat Nail Salon</h1>
 <h2>Style, Care, Perfection</h2>
@@ -50,7 +50,7 @@ Book Your Appointment
 <div class="gallery">
 
 <div class="gallery-card">
-<img src="luxurynail.jpg">
+<img src="assets/nails/luxurynail.jpg">
 <div class="gallery-overlay">
 <h3>Luxury Nail Art</h3>
 <p>Elegant custom nail designs.</p>
@@ -58,7 +58,7 @@ Book Your Appointment
 </div>
 
 <div class="gallery-card">
-<img src="pedicure.jpg">
+<img src="assets/nails/pedicure.jpg">
 <div class="gallery-overlay">
 <h3>Classic Pedicure</h3>
 <p>Relax, refresh, and rejuvenate.</p>
@@ -66,7 +66,7 @@ Book Your Appointment
 </div>
 
 <div class="gallery-card">
-<img src="manicure.jpg">
+<img src="assets/nails/manicure.jpg">
 <div class="gallery-overlay">
 <h3>Gel Manicure</h3>
 <p>Long-lasting glossy finish.</p>
@@ -74,7 +74,7 @@ Book Your Appointment
 </div>
 
 <div class="gallery-card">
-<img src="spa.jpg">
+<img src="assets/spa/spa.jpg">
 <div class="gallery-overlay">
 <h3>Spa Treatment</h3>
 <p>Ultimate hand & foot relaxation.</p>
