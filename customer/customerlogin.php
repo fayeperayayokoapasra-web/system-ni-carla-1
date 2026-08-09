@@ -2,27 +2,29 @@
 session_start();
 
 $message = "";
-$accountsFile = __DIR__ . '/accounts_data.json';
+$customersFile = __DIR__ . '/assets/json/customers_data.json';
 
-function loadCustomerAccounts($file){
-    if(!file_exists($file)){
-        return [];
+function ensureJsonFile($file){
+    $folder = dirname($file);
+    if(!is_dir($folder)){
+        mkdir($folder, 0777, true);
     }
-    $data = json_decode(file_get_contents($file), true);
+
+    if(!file_exists($file)){
+        file_put_contents($file, json_encode([], JSON_PRETTY_PRINT));
+    }
+}
+
+function loadCustomers($file){
+    ensureJsonFile($file);
+    $contents = @file_get_contents($file);
+    $data = json_decode($contents, true);
     return is_array($data) ? $data : [];
 }
 
-function saveCustomerAccounts($file, $accounts){
-    file_put_contents($file, json_encode(array_values($accounts), JSON_PRETTY_PRINT));
-}
-
-function findAccountByEmail($accounts, $email){
-    foreach($accounts as $account){
-        if(isset($account['email']) && strtolower($account['email']) === strtolower($email)){
-            return $account;
-        }
-    }
-    return null;
+function saveCustomers($file, $customers){
+    ensureJsonFile($file);
+    file_put_contents($file, json_encode($customers, JSON_PRETTY_PRINT));
 }
 
 /* SWITCH BETWEEN REGISTER & LOGIN */
@@ -40,22 +42,35 @@ if(isset($_POST['register'])){
     if($password !== $confirm){
         $message = "Passwords do not match!";
     } else {
-        $accounts = loadCustomerAccounts($accountsFile);
+        $normalizedContact = preg_replace('/[^0-9+]/', '', $contact);
 
-        if(findAccountByEmail($accounts, $email) !== null){
-            $message = "This email is already registered. Please log in instead.";
-        } else {
-            $_SESSION['pending_user'] = [
-                "name" => $name,
-                "contact" => $contact,
-                "email" => $email,
-                "password" => $password
-            ];
+        if(preg_match('/^09\d{9}$/', $normalizedContact)){
+            $normalizedContact = '+63' . substr($normalizedContact, 1);
+        } elseif(!preg_match('/^\+639\d{9}$/', $normalizedContact)){
+            $message = "Please enter a Philippine mobile number like 09123456789 or +639123456789.";
+        }
 
-            $_SESSION['otp'] = "123456";
+        if($message === ""){
+            $customers = loadCustomers($customersFile);
+            $existing = array_filter($customers, function($customer) use ($email){
+                return strtolower($customer['email']) === strtolower($email);
+            });
 
-            header("Location: customerverification.php");
-            exit();
+            if(!empty($existing)){
+                $message = "This email is already registered.";
+            } else {
+                $_SESSION['pending_user'] = [
+                    "name" => $name,
+                    "contact" => $normalizedContact,
+                    "email" => $email,
+                    "password" => password_hash($password, PASSWORD_DEFAULT)
+                ];
+
+                $_SESSION['otp'] = "123456";
+
+                header("Location: customerverification.php");
+                exit();
+            }
         }
     }
 }
@@ -65,27 +80,23 @@ if(isset($_POST['login'])){
 
     $email = trim($_POST['login_email']);
     $password = $_POST['login_password'];
-    $accounts = loadCustomerAccounts($accountsFile);
-    $account = findAccountByEmail($accounts, $email);
+    $customers = loadCustomers($customersFile);
+    $customerFound = null;
 
-    if($account !== null){
-        $storedPassword = $account['password'] ?? '';
-        $authenticated = false;
-
-        if(password_verify($password, $storedPassword)){
-            $authenticated = true;
-        } elseif($password === $storedPassword) {
-            $authenticated = true;
-        }
-
-        if($authenticated){
-            $_SESSION['customer'] = $email;
-            header("Location: customerdashboard.php");
-            exit();
+    foreach($customers as $customer){
+        if(strtolower($customer['email']) === strtolower($email)){
+            $customerFound = $customer;
+            break;
         }
     }
 
-    $message = "Invalid login credentials!";
+    if($customerFound && password_verify($password, $customerFound['password'])){
+        $_SESSION['customer'] = $customerFound['email'];
+        header("Location: customerdashboard.php");
+        exit();
+    } else {
+        $message = "Invalid login credentials!";
+    }
 }
 ?>
 
@@ -96,8 +107,6 @@ if(isset($_POST['login'])){
 <title>Customer Login</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-}
-}
 <link rel="stylesheet" href="assets/css/customer.css">
 </head>
 
@@ -119,8 +128,8 @@ if(isset($_POST['login'])){
 <label>Name</label>
 <input type="text" name="name" required>
 
-<label>Contact No.</label>
-<input type="text" name="contact" required>
+<label>Contact No. (Philippine mobile)</label>
+<input type="text" name="contact" placeholder="09123456789 or +639123456789" required>
 
 <label>Email Address</label>
 <input type="email" name="email" required>

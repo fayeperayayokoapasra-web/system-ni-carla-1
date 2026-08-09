@@ -2,35 +2,48 @@
 session_start();
 
 $message = "";
-$accountsFile = __DIR__ . '/accounts_data.json';
+$customersFile = __DIR__ . '/assets/json/customers_data.json';
 
-function loadCustomerAccounts($file){
-    if(!file_exists($file)){
-        return [];
+function ensureJsonFile($file){
+    $folder = dirname($file);
+    if(!is_dir($folder)){
+        mkdir($folder, 0777, true);
     }
-    $data = json_decode(file_get_contents($file), true);
+
+    if(!file_exists($file)){
+        file_put_contents($file, json_encode([], JSON_PRETTY_PRINT));
+    }
+}
+
+function normalizePhilippinesContact($contact){
+    $clean = preg_replace('/[^0-9+]/', '', trim($contact));
+
+    if(preg_match('/^09\d{9}$/', $clean)){
+        return '+63' . substr($clean, 1);
+    }
+
+    if(preg_match('/^\+639\d{9}$/', $clean)){
+        return $clean;
+    }
+
+    return '';
+}
+
+function loadCustomers($file){
+    ensureJsonFile($file);
+    $contents = @file_get_contents($file);
+    $data = json_decode($contents, true);
     return is_array($data) ? $data : [];
 }
 
-function saveCustomerAccounts($file, $accounts){
-    if(!is_dir(dirname($file)) && dirname($file) !== ''){
-        mkdir(dirname($file), 0777, true);
-    }
-    file_put_contents($file, json_encode(array_values($accounts), JSON_PRETTY_PRINT));
-}
-
-function findAccountByEmail($accounts, $email){
-    foreach($accounts as $account){
-        if(isset($account['email']) && strtolower($account['email']) === strtolower($email)){
-            return $account;
-        }
-    }
-    return null;
+function saveCustomers($file, $customers){
+    ensureJsonFile($file);
+    file_put_contents($file, json_encode($customers, JSON_PRETTY_PRINT));
 }
 
 /* GET CONTACT NUMBER */
 $contact = isset($_SESSION['pending_user']['contact']) 
-    ? $_SESSION['pending_user']['contact'] 
+    ? normalizePhilippinesContact($_SESSION['pending_user']['contact'])
     : "your mobile number";
 
 /* FIXED OTP (HIDDEN) */
@@ -42,34 +55,39 @@ if(isset($_POST['verify'])){
     $input = $_POST['code'];
 
     if($input === $_SESSION['otp']){
-        $pending = $_SESSION['pending_user'] ?? null;
-
-        if(!is_array($pending) || empty($pending['email'])){
-            $message = "Registration session expired. Please try again.";
+        $pendingUser = $_SESSION['pending_user'] ?? null;
+        if(!$pendingUser || empty($pendingUser['email'])){
+            $message = "Unable to complete verification. Please register again.";
         } else {
-            $accounts = loadCustomerAccounts($accountsFile);
-            $existing = findAccountByEmail($accounts, $pending['email']);
+            $customers = loadCustomers($customersFile);
+            $existing = array_filter($customers, function($customer) use ($pendingUser){
+                return strtolower($customer['email']) === strtolower($pendingUser['email']);
+            });
 
-            if($existing === null){
-                $accounts[] = [
-                    'name' => $pending['name'],
-                    'contact' => $pending['contact'],
-                    'email' => $pending['email'],
-                    'password' => password_hash($pending['password'], PASSWORD_DEFAULT),
-                    'created_at' => date('Y-m-d H:i:s')
-                ];
-                saveCustomerAccounts($accountsFile, $accounts);
+            $storedContact = normalizePhilippinesContact($pendingUser['contact']);
+            if(empty($storedContact)){
+                $message = "Unable to save contact number in Philippine format. Please register again.";
+            } else {
+                if(empty($existing)){
+                    $customers[] = [
+                        "name" => $pendingUser['name'],
+                        "contact" => $storedContact,
+                        "email" => $pendingUser['email'],
+                        "password" => $pendingUser['password']
+                    ];
+                    saveCustomers($customersFile, $customers);
+                }
+
+                $_SESSION['customer'] = $pendingUser['email'];
+                unset($_SESSION['pending_user']);
+
+                header("Location: customerdashboard.php");
+                exit();
             }
-
-            /* LOGIN USER */
-            $_SESSION['customer'] = $pending['email'];
-            unset($_SESSION['pending_user']);
-            unset($_SESSION['otp']);
 
             header("Location: customerdashboard.php");
             exit();
         }
-
     } else {
         $message = "Invalid OTP code!";
     }
