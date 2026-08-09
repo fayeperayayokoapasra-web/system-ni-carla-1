@@ -25,6 +25,28 @@ function normalizePhilippinesContact($contact){
     return '';
 }
 
+function validatePassword($password){
+    $errors = [];
+
+    if(strlen($password) < 8){
+        $errors[] = 'Password must be at least 8 characters.';
+    }
+    if(!preg_match('/[a-z]/', $password)){
+        $errors[] = 'Password must include a lowercase letter.';
+    }
+    if(!preg_match('/[A-Z]/', $password)){
+        $errors[] = 'Password must include an uppercase letter.';
+    }
+    if(!preg_match('/\d/', $password)){
+        $errors[] = 'Password must include a number.';
+    }
+    if(!preg_match('/[^a-zA-Z\d]/', $password)){
+        $errors[] = 'Password must include a special character.';
+    }
+
+    return $errors;
+}
+
 function loadCustomers($file){
     ensureJsonFile($file);
     $contents = @file_get_contents($file);
@@ -48,7 +70,10 @@ if(isset($_POST['register'])){
     $password = $_POST['password'];
     $confirm = $_POST['confirm'];
 
-    if($password !== $confirm){
+    $passwordErrors = validatePassword($password);
+    if(!empty($passwordErrors)){
+        $message = implode(' ', $passwordErrors);
+    } elseif($password !== $confirm){
         $message = "Passwords do not match!";
     } else {
         $digits = preg_replace('/\D/', '', $contact);
@@ -118,10 +143,20 @@ if(isset($_POST['register'])){
 <input type="email" name="email" required>
 
 <label>Password</label>
-<input type="password" name="password" required>
+<input type="password" name="password" id="passwordInput" required oninput="validatePasswordField(); validateConfirmPasswordField();">
+<div class="password-guidelines">
+    <p>Password must include:</p>
+    <ul>
+        <li id="pw-length" class="pw-criterion">At least 8 characters</li>
+        <li id="pw-upper" class="pw-criterion">At least one uppercase letter</li>
+        <li id="pw-lower" class="pw-criterion">At least one lowercase letter</li>
+        <li id="pw-number" class="pw-criterion">At least one number</li>
+        <li id="pw-special" class="pw-criterion">At least one special character</li>
+    </ul>
+</div>
 
 <label>Confirm Password</label>
-<input type="password" name="confirm" required>
+<input type="password" name="confirm" id="confirmInput" required oninput="validateConfirmPasswordField();">
 
 <button type="submit" name="register">Create Account</button>
 
@@ -181,6 +216,41 @@ function validateContact(input){
         input.setCustomValidity('Use format: 09123456789 or 0912-345-6789');
     } else {
         input.setCustomValidity('');
+    }
+}
+
+function validatePasswordField(){
+    const password = document.getElementById('passwordInput').value;
+    const checks = {
+        length: password.length >= 8,
+        upper: /[A-Z]/.test(password),
+        lower: /[a-z]/.test(password),
+        number: /\d/.test(password),
+        special: /[^A-Za-z0-9]/.test(password)
+    };
+
+    document.getElementById('pw-length').classList.toggle('valid', checks.length);
+    document.getElementById('pw-upper').classList.toggle('valid', checks.upper);
+    document.getElementById('pw-lower').classList.toggle('valid', checks.lower);
+    document.getElementById('pw-number').classList.toggle('valid', checks.number);
+    document.getElementById('pw-special').classList.toggle('valid', checks.special);
+
+    const input = document.getElementById('passwordInput');
+    if(Object.values(checks).every(Boolean)){
+        input.setCustomValidity('');
+    } else {
+        input.setCustomValidity('Password must be at least 8 characters and include uppercase, lowercase, number, and special character.');
+    }
+}
+
+function validateConfirmPasswordField(){
+    const password = document.getElementById('passwordInput').value;
+    const confirm = document.getElementById('confirmInput');
+
+    if(confirm.value !== password){
+        confirm.setCustomValidity('Passwords do not match.');
+    } else {
+        confirm.setCustomValidity('');
     }
 }
 </script>
