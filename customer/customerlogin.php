@@ -63,6 +63,7 @@ if(isset($_POST['login'])){
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/customer.css">
+<link rel="stylesheet" href="assets/css/customerauth.css">
 </head>
 
 <body class="login-page">

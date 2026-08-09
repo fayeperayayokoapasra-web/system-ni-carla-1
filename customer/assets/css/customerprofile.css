@@ -1,0 +1,66 @@
+body.profile-page {
+    background: #f0fdf9;
+}
+
+.back {
+    font-size: 14px;
+    color: #065f46;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.profile-box {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15), 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.profile-box h2 {
+    margin-top: 0;
+    color: #065f46;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #065f46;
+}
+
+.field input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+}
+
+.password-display {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.save-btn-hidden {
+    display: none;
+}

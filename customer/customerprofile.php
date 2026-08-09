@@ -21,6 +21,7 @@ $password = "mypassword123";
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/customer.css">
+<link rel="stylesheet" href="assets/css/customerprofile.css">
 </head>
 
 <body class="profile-page">
@@ -70,7 +71,7 @@ $password = "mypassword123";
 
 <!-- BUTTON SWITCH -->
 <button type="button" class="btn" id="editBtn" onclick="enableEdit()">Edit</button>
-<button type="submit" class="btn" id="saveBtn" style="display:none;">Save Changes</button>
+<button type="submit" class="btn save-btn-hidden" id="saveBtn">Save Changes</button>
 
 </form>
 

@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #064e3b, #10b981);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    background: white;
+    width: 400px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: #064e3b;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 13px;
+    color: #064e3b;
+    margin-bottom: 15px;
+}
+
+.otp-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.otp-container input {
+    width: 40px;
+    height: 45px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+.otp-container input:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 6px rgba(16,185,129,0.3);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #10b981;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #059669;
+    transform: scale(1.03);
+}
+
+.success {
+    color: #064e3b;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.resend {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.resend button {
+    background: none;
+    color: #064e3b;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.msg {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
