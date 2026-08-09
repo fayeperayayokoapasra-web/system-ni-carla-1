@@ -24,7 +24,10 @@ function loadCustomers($file){
 
 function saveCustomers($file, $customers){
     ensureJsonFile($file);
-    file_put_contents($file, json_encode($customers, JSON_PRETTY_PRINT));
+    $json = json_encode($customers, JSON_PRETTY_PRINT);
+    if($json === false || file_put_contents($file, $json, LOCK_EX) === false){
+        throw new RuntimeException('Unable to save customers data.');
+    }
 }
 
 /* SWITCH BETWEEN REGISTER & LOGIN */

@@ -2,6 +2,7 @@
 session_start();
 
 $message = "";
+$success = "";
 $customersFile = __DIR__ . '/assets/json/customers_data.json';
 
 function ensureJsonFile($file){
@@ -34,7 +35,10 @@ function loadCustomers($file){
 
 function saveCustomers($file, $customers){
     ensureJsonFile($file);
-    file_put_contents($file, json_encode($customers, JSON_PRETTY_PRINT));
+    $json = json_encode($customers, JSON_PRETTY_PRINT);
+    if($json === false || file_put_contents($file, $json, LOCK_EX) === false){
+        throw new RuntimeException('Unable to save customers data.');
+    }
 }
 
 /* GET CONTACT NUMBER */
@@ -74,15 +78,9 @@ if(isset($_POST['verify'])){
                     saveCustomers($customersFile, $customers);
                 }
 
-                $_SESSION['customer'] = $pendingUser['email'];
                 unset($_SESSION['pending_user']);
-
-                header("Location: customerdashboard.php");
-                exit();
+                $success = "Your account has been verified and created successfully. Please log in to continue.";
             }
-
-            header("Location: customerdashboard.php");
-            exit();
         }
     } else {
         $message = "Invalid OTP code!";
@@ -182,6 +180,12 @@ background:#059669;
 transform:scale(1.03);
 }
 
+.success{
+color:#064e3b;
+font-size:14px;
+margin-bottom:10px;
+}
+
 .resend{
 margin-top:10px;
 font-size:13px;
@@ -217,6 +221,10 @@ Enter the OTP sent to <b><?php echo $contact; ?></b>
 
 <?php if($message != ""): ?>
 <p class="msg"><?php echo $message; ?></p>
+<?php endif; ?>
+
+<?php if($success != ""): ?>
+<p class="success"><?php echo $success; ?></p>
 <?php endif; ?>
 
 <form method="POST" onsubmit="combineOTP()">
@@ -273,6 +281,12 @@ document.getElementById("fullcode").value = code;
 }
 
 </script>
+
+<?php if($success !== ""): ?>
+<script>
+    setTimeout(function(){ window.location.href = 'customerlogin.php?mode=login'; }, 2500);
+</script>
+<?php endif; ?>
 
 </body>
 </html>
