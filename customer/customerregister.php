@@ -112,7 +112,7 @@ if(isset($_POST['register'])){
 <input type="text" name="name" required>
 
 <label>Contact No. (Philippine mobile)</label>
-<input type="tel" name="contact" id="contactInput" inputmode="numeric" maxlength="13" placeholder="09123456789" pattern="^09\d{9}$|^09\d{2}-\d{3}-\d{4}$" title="Enter 09123456789 or 0912-345-6789" oninput="formatPhoneNumberInput(this)" onfocus="formatPhoneNumberFocus(this)" onblur="formatPhoneNumberOnBlur(this)" oninvalid="this.setCustomValidity('Use format: 09123456789 or 0912-345-6789')" required>
+<input type="tel" name="contact" id="contactInput" inputmode="numeric" maxlength="13" placeholder="09123456789" pattern="^09\d{9}$|^09\d{2}-\d{3}-\d{4}$" title="Enter 09123456789 or 0912-345-6789" oninput="formatPhoneNumberInput(this)" onkeydown="restrictToDigits(event)" onpaste="handleContactPaste(event)" onfocus="formatPhoneNumberFocus(this)" onblur="formatPhoneNumberOnBlur(this)" oninvalid="this.setCustomValidity('Use format: 09123456789 or 0912-345-6789')" required>
 
 <label>Email Address</label>
 <input type="email" name="email" required>
@@ -151,6 +151,28 @@ function formatPhoneNumberOnBlur(input) {
     } else {
         input.value = digits;
     }
+}
+
+function restrictToDigits(event) {
+    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete'];
+    if (allowedKeys.includes(event.key)) {
+        return;
+    }
+
+    if (!/\d/.test(event.key)) {
+        event.preventDefault();
+    }
+}
+
+function handleContactPaste(event) {
+    const pasted = (event.clipboardData || window.clipboardData).getData('text');
+    const digits = pasted.replace(/\D/g, '');
+    if (!/^09\d{9}$/.test(digits)) {
+        event.preventDefault();
+        return;
+    }
+    event.target.value = digits;
+    event.preventDefault();
 }
 
 function validateContact(input){
