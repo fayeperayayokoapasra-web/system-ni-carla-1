@@ -16,14 +16,10 @@ function ensureJsonFile($file){
 }
 
 function normalizePhilippinesContact($contact){
-    $clean = preg_replace('/[^0-9+]/', '', trim($contact));
+    $digits = preg_replace('/\D/', '', trim($contact));
 
-    if(preg_match('/^09\d{9}$/', $clean)){
-        return '+63' . substr($clean, 1);
-    }
-
-    if(preg_match('/^\+639\d{9}$/', $clean)){
-        return $clean;
+    if(preg_match('/^09\d{9}$/', $digits)){
+        return substr($digits, 0, 4) . '-' . substr($digits, 4, 3) . '-' . substr($digits, 7, 4);
     }
 
     return '';

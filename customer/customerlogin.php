@@ -42,12 +42,13 @@ if(isset($_POST['register'])){
     if($password !== $confirm){
         $message = "Passwords do not match!";
     } else {
-        $normalizedContact = preg_replace('/[^0-9+]/', '', $contact);
+        $digits = preg_replace('/\D/', '', $contact);
+        $normalizedContact = '';
 
-        if(preg_match('/^09\d{9}$/', $normalizedContact)){
-            $normalizedContact = '+63' . substr($normalizedContact, 1);
-        } elseif(!preg_match('/^\+639\d{9}$/', $normalizedContact)){
-            $message = "Please enter a Philippine mobile number like 09123456789 or +639123456789.";
+        if(preg_match('/^09\d{9}$/', $digits)){
+            $normalizedContact = substr($digits, 0, 4) . '-' . substr($digits, 4, 3) . '-' . substr($digits, 7, 4);
+        } else {
+            $message = "Please enter a Philippine mobile number like 09123456789.";
         }
 
         if($message === ""){
@@ -129,7 +130,7 @@ if(isset($_POST['login'])){
 <input type="text" name="name" required>
 
 <label>Contact No. (Philippine mobile)</label>
-<input type="text" name="contact" placeholder="09123456789 or +639123456789" required>
+<input type="tel" name="contact" id="contactInput" placeholder="0912-345-6789" pattern="^\(?09\d{2}\)?[- ]?\d{3}[- ]?\d{4}$" title="Enter 09123456789 or 0912-345-6789" oninput="formatPhoneNumber(this); validateContact(this)" oninvalid="this.setCustomValidity('Use format: 0912-345-6789 or 09123456789')" required>
 
 <label>Email Address</label>
 <input type="email" name="email" required>
@@ -179,5 +180,26 @@ if(isset($_POST['login'])){
 
 </div>
 
+<script>
+function formatPhoneNumber(input){
+    let digits = input.value.replace(/\D/g, '').slice(0, 11);
+    if(digits.length > 4){
+        digits = digits.slice(0, 4) + '-' + digits.slice(4);
+    }
+    if(digits.length > 8){
+        digits = digits.slice(0, 8) + '-' + digits.slice(8);
+    }
+    input.value = digits;
+}
+
+function validateContact(input){
+    const re = /^\(?09\d{2}\)?[- ]?\d{3}[- ]?\d{4}$/;
+    if(!re.test(input.value)){
+        input.setCustomValidity('Use format: 0912-345-6789 or 09123456789');
+    } else {
+        input.setCustomValidity('');
+    }
+}
+</script>
 </body>
 </html>
