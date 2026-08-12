@@ -76,7 +76,7 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: #f4fdf9;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /* ===== TOPBAR ===== */
@@ -113,7 +113,7 @@ body {
 /* MAIN */
 .main {
     margin-left: 220px;
-    padding: 65px 25px 25px;
+    padding: 75px 25px 25px;
     transition: 0.3s;
 }
 
@@ -127,6 +127,7 @@ body {
     padding: 18px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-top: 6px;
     margin-bottom: 15px;
 }
 
@@ -152,7 +153,12 @@ body {
 /* ===== NEW: TABLE CONTAINER (ONLY ADDITION) ===== */
 .table-container {
     width: 100%;
+    max-height: 68vh;
+    overflow-y: auto;
+    overflow-x: auto;
     border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    background: white;
 }
 
 /* TABLE */
@@ -162,7 +168,7 @@ table {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: none;
     text-align: center;
 }
 

@@ -88,6 +88,8 @@ body {
 .search-box {
     position: relative;
     max-width: 420px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .search-icon {

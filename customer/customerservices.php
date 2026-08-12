@@ -5,6 +5,42 @@ if(!isset($_SESSION['customer'])){
 header("Location: customerlogin.php");
 exit();
 }
+
+$servicesFile = dirname(__DIR__) . '/cut-and-coat/functions/json/services_data.json';
+$serviceCategories = [];
+
+if(file_exists($servicesFile)){
+    $decodedServices = json_decode(file_get_contents($servicesFile), true);
+    if(is_array($decodedServices)){
+        $serviceCategories = $decodedServices;
+    }
+}
+
+if(empty($serviceCategories)){
+    $serviceCategories = [
+        [
+            'id' => 'default_services',
+            'title' => 'Available Services',
+            'services' => []
+        ]
+    ];
+}
+
+function customerServiceImageUrl($image) {
+    if (empty($image)) {
+        return 'https://via.placeholder.com/300';
+    }
+
+    if (strpos($image, 'http://') === 0 || strpos($image, 'https://') === 0 || strpos($image, 'data:') === 0) {
+        return $image;
+    }
+
+    if (strpos($image, 'assets/services/') === 0) {
+        return '../cut-and-coat/' . $image;
+    }
+
+    return $image;
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,105 +60,37 @@ exit();
 <h3>Cut & Coat Nail Salon</h3>
 </div>
 
-
-
 <?php include 'sidebar.php'; ?>
 
 <div class="main" id="main">
 
 <div class="title">Our Services</div>
-<!-- MANICURE -->
-<div class="category-title">Manicure & Pedicure</div>
-<div class="grid">
 
-<div class="card"><img src="assets/nails/classicmanicure.jpg"><h4>Classic Manicure</h4><div class="price">₱150</div></div>
-<div class="card"><img src="assets/nails/classicpedicure.jpg"><h4>Classic Pedicure</h4><div class="price">₱180</div></div>
-<div class="card"><img src="assets/nails/gelmanicure.jpg"><h4>Gel Manicure</h4><div class="price">₱499</div></div>
-<div class="card"><img src="assets/nails/gelpedicure.jpg"><h4>Gel Pedicure</h4><div class="price">₱599</div></div>
-<div class="card"><img src="assets/nails/gelremoval.jpg"><h4>Gel Removal</h4><div class="price">₱100</div></div>
-<div class="card"><img src="assets/spa/spamanicure.jpg"><h4>Spa Manicure</h4><div class="price">₱250</div></div>
-<div class="card"><img src="assets/spa/spapedicure.jpg"><h4>Spa Pedicure</h4><div class="price">₱280</div></div>
-<div class="card"><img src="assets/spa/footspa.jpg"><h4>Foot Spa</h4><div class="price">₱350</div></div>
-<div class="card"><img src="assets/nails/deluxemanicure.jpg"><h4>Deluxe Manicure</h4><div class="price">₱350</div></div>
-<div class="card"><img src="assets/nails/deluxepedicure.jpg"><h4>Deluxe Pedicure</h4><div class="price">₱380</div></div>
-
-</div>
-
-<!-- POLISH -->
-<div class="category-title">Change Polish</div>
-<div class="grid">
-
-<div class="card"><img src="assets/nails/localpolish.jpg"><h4>Local Polish</h4><div class="price">₱49</div></div>
-<div class="card"><img src="assets/nails/brandedpolish.jpg"><h4>Branded Polish</h4><div class="price">₱79</div></div>
-<div class="card"><img src="assets/nails/frenchpolish.jpg"><h4>French Polish</h4><div class="price">₱99</div></div>
-<div class="card"><img src="assets/nails/gelpolish.jpg"><h4>Gel Polish Change</h4><div class="price">₱199</div></div>
-<div class="card"><img src="assets/nails/mattepolish.jpg"><h4>Matte Polish</h4><div class="price">₱89</div></div>
-
-</div>
-
-<!-- EXTENSIONS -->
-<div class="category-title">Extensions</div>
-<div class="grid">
-
-<div class="card"><img src="assets/nails/softgel.jpg"><h4>Soft Gel Extension</h4><div class="price">₱799</div></div>
-<div class="card"><img src="assets/nails/softremoval.jpg"><h4>Soft Gel Removal</h4><div class="price">₱300</div></div>
-<div class="card"><img src="assets/nails/repair.jpg"><h4>Repair per nail</h4><div class="price">₱79</div></div>
-<div class="card"><img src="assets/nails/acrylic.jpg"><h4>Acrylic Extension</h4><div class="price">₱899</div></div>
-<div class="card"><img src="assets/nails/refill.jpg"><h4>Gel Refill</h4><div class="price">₱499</div></div>
-
-</div>
-
-<!-- NAIL ART -->
-<div class="category-title">Nail Art</div>
-<div class="grid">
-
-<div class="card"><img src="assets/nails/plain.jpg"><h4>Plain</h4><div class="price">₱100</div></div>
-<div class="card"><img src="assets/nails/chrome.jpg"><h4>Chrome</h4><div class="price">₱150</div></div>
-<div class="card"><img src="assets/nails/ombre.jpg"><h4>Ombre</h4><div class="price">₱150</div></div>
-<div class="card"><img src="assets/nails/frenchtip.jpg"><h4>French Tip</h4><div class="price">₱100</div></div>
-<div class="card"><img src="assets/nails/cateye.jpg"><h4>Cat Eye</h4><div class="price">₱150</div></div>
-<div class="card"><img src="assets/nails/glitter.jpg"><h4>Glitter Design</h4><div class="price">₱120</div></div>
-<div class="card"><img src="assets/nails/3d.jpg"><h4>3D Nail Art</h4><div class="price">₱200</div></div>
-<div class="card"><img src="assets/nails/marble.jpg"><h4>Marble Design</h4><div class="price">₱180</div></div>
-<div class="card"><img src="assets/nails/foil.jpg"><h4>Foil Design</h4><div class="price">₱130</div></div>
-<div class="card"><img src="assets/nails/minimalist.jpg"><h4>Minimalist Art</h4><div class="price">₱110</div></div>
-
-</div>
-
-<!-- MASSAGE -->
-<div class="category-title">Massage</div>
-<div class="grid">
-
-<div class="card"><img src="assets/massage/classicmassage.jpg"><h4>Classic Massage</h4><div class="price">₱399</div></div>
-<div class="card"><img src="assets/massage/signature.jpg"><h4>Signature Massage</h4><div class="price">₱499</div></div>
-<div class="card"><img src="assets/massage/footmassage.jpg"><h4>Foot Massage</h4><div class="price">₱299</div></div>
-<div class="card"><img src="assets/massage/back.jpg"><h4>Back Massage</h4><div class="price">₱349</div></div>
-<div class="card"><img src="assets/massage/head.jpg"><h4>Head Massage</h4><div class="price">₱199</div></div>
-
-</div>
-
-<!-- ADD-ONS -->
-<div class="category-title">Add-ons</div>
-<div class="grid">
-
-<div class="card"><img src="assets/massage/warmstone.jpg"><h4>Warm Stone</h4><div class="price">₱300</div></div>
-<div class="card"><img src="assets/massage/ventosa.jpg"><h4>Ventosa</h4><div class="price">₱200</div></div>
-<div class="card"><img src="assets/massage/compress.jpg"><h4>Hot Compress</h4><div class="price">₱150</div></div>
-<div class="card"><img src="assets/massage/aroma.jpg"><h4>Aromatherapy Oil</h4><div class="price">₱180</div></div>
-<div class="card"><img src="assets/spa/scrub.jpg"><h4>Foot Scrub</h4><div class="price">₱120</div></div>
-
-</div>
-
+<?php foreach($serviceCategories as $category): ?>
+    <div class="category-title"><?php echo htmlspecialchars($category['title'] ?? 'Services'); ?></div>
+    <div class="grid">
+        <?php if(!empty($category['services']) && is_array($category['services'])): ?>
+            <?php foreach($category['services'] as $service): ?>
+                <?php $serviceImage = customerServiceImageUrl($service['image'] ?? ''); ?>
+                <div class="card">
+                    <img src="<?php echo htmlspecialchars($serviceImage); ?>" alt="<?php echo htmlspecialchars($service['name'] ?? 'Service'); ?>">
+                    <h4><?php echo htmlspecialchars($service['name'] ?? 'Service'); ?></h4>
+                    <div class="price">₱<?php echo htmlspecialchars($service['price'] ?? '0'); ?></div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="card" style="width: 100%; grid-column: 1 / -1;">
+                <h4>No services available yet.</h4>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endforeach; ?>
 
 <script>
-
-
-
 /* smooth page load */
 window.addEventListener("load", ()=>{
 document.body.style.opacity = "1";
 });
-
 </script>
 
 </body>
