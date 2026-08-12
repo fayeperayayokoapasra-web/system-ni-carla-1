@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "name": "Jhonalyn Ann Ramos",
+        "contact": "0956-086-3007",
+        "email": "jhonalyndino009@gmail.com",
+        "password": "$2y$10$TuF\/bJe\/XW6VBtyV3iqk\/OcFHyUcIfxmITvlpzGZEnc8TgKMNa4Aa"
+    },
+    {
+        "name": "Carla",
+        "contact": "0956-086-3007",
+        "email": "jenniemandukim16@gmail.com",
+        "password": "$2y$10$.mWCfjTsl88qxPpA9gLBpuoEnPv82mzB4wtDVhkECKwYvndVF1wzm"
+    }
+]

@@ -1,21 +1,16 @@
 <?php
 session_start();
 
-// If called via AJAX, start output buffering to prevent accidental HTML/PHP warnings
+// If called via AJAX, start output buffering
 if(!empty($_POST['ajax'])){
     ob_start();
 }
 
-if(!isset($_SESSION['admin'])){
-header("Location: adminlogin.php");
-exit();
+if(!isset($_SESSION['customer_bookings'])){
+    $_SESSION['customer_bookings'] = [];
 }
 
-if(!isset($_SESSION['walkins'])){
-$_SESSION['walkins'] = [];
-}
-
-$staffFile = __DIR__ . '/json/staff_data.json';
+$staffFile = __DIR__ . '/../../cut-and-coat/functions/json/staff_data.json';
 $_SESSION['staff_status'] = [];
 
 if(file_exists($staffFile)){
@@ -37,7 +32,7 @@ if(empty($_SESSION['staff_status'])){
     ];
 }
 
-$servicesFile = __DIR__ . '/json/services_data.json';
+$servicesFile = __DIR__ . '/../../cut-and-coat/functions/json/services_data.json';
 $servicePrices = [];
 $serviceSections = [];
 if(file_exists($servicesFile)){
@@ -91,7 +86,7 @@ $down = 0;
 $balance = 0;
 $serviceLabel = '';
 
-$availabilityFile = __DIR__ . '/json/availability_data.json';
+$availabilityFile = __DIR__ . '/../../cut-and-coat/functions/json/availability_data.json';
 $availabilityData = [];
 if(file_exists($availabilityFile)){
     $availabilityData = json_decode(file_get_contents($availabilityFile), true);
@@ -106,13 +101,11 @@ foreach($availabilityData as $date => $meta){
     if(!is_array($meta)){
         continue;
     }
-
     $bookedTimes = [];
     if(isset($meta['bookedTimes']) && is_array($meta['bookedTimes'])){
         foreach($meta['bookedTimes'] as $time){
             $cleanTime = trim((string)$time);
             if($cleanTime === '') continue;
-            // Normalize to hour slot (e.g. 13:17 -> 13:00) so matching works with defined slots
             $ts = strtotime($cleanTime);
             if($ts !== false){
                 $slot = date('H:00', $ts);
@@ -124,12 +117,10 @@ foreach($availabilityData as $date => $meta){
     } elseif(isset($meta['status']) && $meta['status'] === 'unavailable'){
         $bookedTimes = $timeSlots;
     }
-
     $bookedTimes = array_values(array_unique($bookedTimes));
     $availableTimes = array_values(array_diff($timeSlots, $bookedTimes));
     sort($bookedTimes);
     sort($availableTimes);
-
     $availabilityData[$date] = [
         'status' => empty($availableTimes) ? 'unavailable' : 'available',
         'bookedTimes' => $bookedTimes,
@@ -138,7 +129,7 @@ foreach($availabilityData as $date => $meta){
     ];
 }
 
-$walkinsDataFile = __DIR__ . '/json/walkins_data.json';
+$walkinsDataFile = __DIR__ . '/../../cut-and-coat/functions/json/walkins_data.json';
 if(file_exists($walkinsDataFile)){
     $existingWalkins = json_decode(file_get_contents($walkinsDataFile), true);
     if(is_array($existingWalkins)){
@@ -166,7 +157,6 @@ if(file_exists($walkinsDataFile)){
                     }
 
                     if($bookingTime !== ''){
-                        // normalize booking time to nearest hour slot
                         $btTs = strtotime($bookingTime);
                         if($btTs !== false){
                             $slotTime = date('H:00', $btTs);
@@ -184,16 +174,12 @@ if(file_exists($walkinsDataFile)){
 }
 
 foreach($availabilityData as $date => $meta){
-    if(!is_array($meta)){
-        continue;
-    }
-
+    if(!is_array($meta)) continue;
     $bookedTimes = $meta['bookedTimes'] ?? [];
     $bookedTimes = array_values(array_unique(array_filter(array_map(function($time){ return trim((string)$time); }, $bookedTimes), function($time){ return $time !== ''; })));
     $availableTimes = array_values(array_diff($timeSlots, $bookedTimes));
     sort($bookedTimes);
     sort($availableTimes);
-
     $availabilityData[$date] = [
         'status' => empty($availableTimes) ? 'unavailable' : 'available',
         'bookedTimes' => $bookedTimes,
@@ -307,27 +293,26 @@ function assignStaffName(array $staffStatus, array $existingBookings, string $de
 }
 
 if(isset($_POST['submit'])){
+    $selectedServices = $_POST['services'] ?? [];
+    $selectedServices = array_values(array_filter(array_map('trim', (array) $selectedServices), function($value){ return $value !== ''; }));
 
-$selectedServices = $_POST['services'] ?? [];
-$selectedServices = array_values(array_filter(array_map('trim', (array) $selectedServices), function($value){ return $value !== ''; }));
-
-$serviceNames = [];
-foreach($selectedServices as $serviceName){
-    if(isset($servicePrices[$serviceName])){
-        $serviceNames[] = $serviceName;
-        $total += $servicePrices[$serviceName];
+    $serviceNames = [];
+    foreach($selectedServices as $serviceName){
+        if(isset($servicePrices[$serviceName])){
+            $serviceNames[] = $serviceName;
+            $total += $servicePrices[$serviceName];
+        }
     }
-}
 
-$serviceLabel = implode(', ', $serviceNames);
-$down = $total * 0.5;
-$balance = $total - $down;
+    $serviceLabel = implode(', ', $serviceNames);
+    $down = $total * 0.5;
+    $balance = $total - $down;
 
-if(!empty($serviceNames)){
+    if(!empty($serviceNames)){
         $staffInput = trim((string)($_POST['staff'] ?? ''));
         $existingBookingFiles = [
-            __DIR__ . '/json/walkins_data.json',
-            __DIR__ . '/json/customers_data.json'
+            __DIR__ . '/../../cut-and-coat/functions/json/walkins_data.json',
+            __DIR__ . '/../../cut-and-coat/functions/json/customers_data.json'
         ];
         $existingStaffBookings = loadExistingStaffBookings($existingBookingFiles);
         $assignedStaff = $staffInput;
@@ -354,133 +339,160 @@ if(!empty($serviceNames)){
             "email" => $_POST['email'],
             "date" => $_POST['date'],
             "staff" => $assignedStaff,
-        "services" => $serviceNames,
-        "total" => $total,
-        "payment" => $_POST['payment'],
-        "reference" => $_POST['reference'],
-        "status" => "upcoming",
-        "method" => "walkin"
-    ];
-
-    $_SESSION['walkins'][] = $booking;
-
-    $walkinsFile = __DIR__ . '/json/walkins_data.json';
-    $walkinsDir = dirname($walkinsFile);
-    if(!is_dir($walkinsDir)){
-        mkdir($walkinsDir, 0777, true);
-    }
-
-    $existingWalkins = [];
-    if(file_exists($walkinsFile)){
-        $existingWalkins = json_decode(file_get_contents($walkinsFile), true);
-        if(!is_array($existingWalkins)){
-            $existingWalkins = [];
-        }
-    }
-
-    $existingWalkins[] = $booking;
-    file_put_contents($walkinsFile, json_encode($existingWalkins, JSON_PRETTY_PRINT));
-
-    $bookingDate = date('Y-m-d', strtotime($booking['date']));
-    $bookingTime = date('H:i', strtotime($booking['date']));
-
-    if(!isset($availabilityData[$bookingDate])){
-        $availabilityData[$bookingDate] = [
-            'status' => 'available',
-            'bookedTimes' => [],
-            'availableTimes' => $timeSlots,
-            'reason' => 'Open'
+            "service" => $serviceLabel,
+            "services" => $serviceNames,
+            "total" => $total,
+            "payment" => $_POST['payment'],
+            "reference" => $_POST['reference'],
+            "status" => "upcoming",
+            "type" => "Online",
+            "method" => "customer"
         ];
-    }
 
-    // normalize booking time to hour slot when storing
-    $btTs = strtotime($bookingTime);
-    if($btTs !== false){
-        $slot = date('H:00', $btTs);
-    } else {
-        $slot = $bookingTime;
-    }
-    $availabilityData[$bookingDate]['bookedTimes'][] = $slot;
-    $bookedTimes = array_values(array_unique(array_filter(array_map(function($time){ return trim((string)$time); }, $availabilityData[$bookingDate]['bookedTimes']), function($time){ return $time !== ''; })));
-    $availableTimes = array_values(array_diff($timeSlots, $bookedTimes));
-    sort($bookedTimes);
-    sort($availableTimes);
+        $_SESSION['customer_bookings'][] = $booking;
 
-    $availabilityData[$bookingDate] = [
-        'status' => empty($availableTimes) ? 'unavailable' : 'available',
-        'bookedTimes' => $bookedTimes,
-        'availableTimes' => $availableTimes,
-        'reason' => empty($availableTimes) ? 'Fully booked' : 'Open'
-    ];
-    file_put_contents($availabilityFile, json_encode($availabilityData, JSON_PRETTY_PRINT));
+        $walkinsDir = dirname($walkinsDataFile);
+        if(!is_dir($walkinsDir)) mkdir($walkinsDir, 0777, true);
 
-    $salesFile = __DIR__ . '/json/sales_data.json';
-    $existingSales = [];
-    $currentTotalSales = 0;
-    if(file_exists($salesFile)){
-        $salesRaw = json_decode(file_get_contents($salesFile), true);
-        if(is_array($salesRaw)){
-            if(isset($salesRaw['records']) && is_array($salesRaw['records'])){
-                $existingSales = $salesRaw['records'];
-                $currentTotalSales = isset($salesRaw['totalSales']) ? (int)$salesRaw['totalSales'] : 0;
-                if($currentTotalSales === 0){
+        $existingWalkins = [];
+        if(file_exists($walkinsDataFile)){
+            $existingWalkins = json_decode(file_get_contents($walkinsDataFile), true);
+            if(!is_array($existingWalkins)) $existingWalkins = [];
+        }
+
+        $existingWalkins[] = $booking;
+        file_put_contents($walkinsDataFile, json_encode($existingWalkins, JSON_PRETTY_PRINT));
+
+        $bookingDate = date('Y-m-d', strtotime($booking['date']));
+        $bookingTime = date('H:i', strtotime($booking['date']));
+
+        if(!isset($availabilityData[$bookingDate])){
+            $availabilityData[$bookingDate] = [
+                'status' => 'available',
+                'bookedTimes' => [],
+                'availableTimes' => $timeSlots,
+                'reason' => 'Open'
+            ];
+        }
+
+        $btTs = strtotime($bookingTime);
+        if($btTs !== false){
+            $slot = date('H:00', $btTs);
+        } else {
+            $slot = $bookingTime;
+        }
+        $availabilityData[$bookingDate]['bookedTimes'][] = $slot;
+        $bookedTimes = array_values(array_unique(array_filter(array_map(function($time){ return trim((string)$time); }, $availabilityData[$bookingDate]['bookedTimes']), function($time){ return $time !== ''; })));
+        $availableTimes = array_values(array_diff($timeSlots, $bookedTimes));
+        sort($bookedTimes);
+        sort($availableTimes);
+
+        $availabilityData[$bookingDate] = [
+            'status' => empty($availableTimes) ? 'unavailable' : 'available',
+            'bookedTimes' => $bookedTimes,
+            'availableTimes' => $availableTimes,
+            'reason' => empty($availableTimes) ? 'Fully booked' : 'Open'
+        ];
+        file_put_contents($availabilityFile, json_encode($availabilityData, JSON_PRETTY_PRINT));
+
+        $salesFile = __DIR__ . '/../../cut-and-coat/functions/json/sales_data.json';
+        $existingSales = [];
+        $currentTotalSales = 0;
+        if(file_exists($salesFile)){
+            $salesRaw = json_decode(file_get_contents($salesFile), true);
+            if(is_array($salesRaw)){
+                if(isset($salesRaw['records']) && is_array($salesRaw['records'])){
+                    $existingSales = $salesRaw['records'];
+                    $currentTotalSales = isset($salesRaw['totalSales']) ? (int)$salesRaw['totalSales'] : 0;
+                    if($currentTotalSales === 0){
+                        foreach($existingSales as $sale){
+                            $currentTotalSales += isset($sale['amount']) ? (int)$sale['amount'] : 0;
+                        }
+                    }
+                } else {
+                    $existingSales = $salesRaw;
                     foreach($existingSales as $sale){
                         $currentTotalSales += isset($sale['amount']) ? (int)$sale['amount'] : 0;
                     }
                 }
-            } else {
-                $existingSales = $salesRaw;
-                foreach($existingSales as $sale){
-                    $currentTotalSales += isset($sale['amount']) ? (int)$sale['amount'] : 0;
+            }
+        }
+
+        $newSale = [
+            'type' => 'Customer Booking',
+            'payment' => $_POST['payment'],
+            'amount' => $total,
+            'date' => $bookingDate
+        ];
+        $existingSales[] = $newSale;
+        $currentTotalSales += $total;
+
+        file_put_contents($salesFile, json_encode([
+            'totalSales' => $currentTotalSales,
+            'records' => $existingSales
+        ], JSON_PRETTY_PRINT));
+
+        // Append to customers file for record
+        $customersFile = __DIR__ . '/../../cut-and-coat/functions/json/customers_data.json';
+        if(!is_dir(dirname($customersFile))){ mkdir(dirname($customersFile), 0777, true); }
+
+        $existingCustomers = [];
+        if(file_exists($customersFile)){
+            $existingCustomers = json_decode(file_get_contents($customersFile), true);
+            if(!is_array($existingCustomers)) $existingCustomers = [];
+        }
+
+        $existingCustomers[] = [
+            'name' => $_POST['name'],
+            'phone' => $_POST['phone'],
+            'staff' => $_POST['staff'],
+            'service' => $serviceLabel,
+            'datetime' => $_POST['date'],
+            'type' => 'Online',
+            'payment' => $_POST['payment'],
+            'status' => 'upcoming'
+        ];
+
+        file_put_contents($customersFile, json_encode($existingCustomers, JSON_PRETTY_PRINT));
+
+        $bookingsDataFile = __DIR__ . '/../../cut-and-coat/functions/json/bookings_data.json';
+        if(!is_dir(dirname($bookingsDataFile))){
+            mkdir(dirname($bookingsDataFile), 0777, true);
+        }
+
+        $existingBookingsData = [];
+        if(file_exists($bookingsDataFile)){
+            $existingBookingsData = json_decode(file_get_contents($bookingsDataFile), true);
+            if(!is_array($existingBookingsData)){
+                $existingBookingsData = [];
+            }
+        }
+
+        $bookingDateOnly = date('Y-m-d', strtotime($booking['date']));
+        $bookingTime = date('g:i A', strtotime($booking['date']));
+        if($bookingDateOnly !== false && $bookingTime !== false){
+            if(!isset($existingBookingsData[$bookingDateOnly]) || !is_array($existingBookingsData[$bookingDateOnly])){
+                $existingBookingsData[$bookingDateOnly] = [];
+            }
+            $alreadyExists = false;
+            foreach($existingBookingsData[$bookingDateOnly] as $entry){
+                if(isset($entry['name'], $entry['time']) && $entry['name'] === $booking['name'] && $entry['time'] === $bookingTime){
+                    $alreadyExists = true;
+                    break;
                 }
+            }
+            if(!$alreadyExists){
+                $existingBookingsData[$bookingDateOnly][] = [
+                    'name' => $booking['name'],
+                    'time' => $bookingTime
+                ];
+                file_put_contents($bookingsDataFile, json_encode($existingBookingsData, JSON_PRETTY_PRINT));
             }
         }
     }
 
-    $newSale = [
-        "type" => "Walk-In",
-        "payment" => $_POST['payment'],
-        "amount" => $total,
-        "date" => $bookingDate
-    ];
-    $existingSales[] = $newSale;
-    $currentTotalSales += $total;
-
-    file_put_contents($salesFile, json_encode([
-        'totalSales' => $currentTotalSales,
-        'records' => $existingSales
-    ], JSON_PRETTY_PRINT));
-
-    $customersFile = __DIR__ . '/json/customers_data.json';
-    if(!is_dir(dirname($customersFile))){
-        mkdir(dirname($customersFile), 0777, true);
-    }
-
-    $existingCustomers = [];
-    if(file_exists($customersFile)){
-        $existingCustomers = json_decode(file_get_contents($customersFile), true);
-        if(!is_array($existingCustomers)){
-            $existingCustomers = [];
-        }
-    }
-
-    $existingCustomers[] = [
-        "name" => $_POST['name'],
-        "phone" => $_POST['phone'],
-        "staff" => $_POST['staff'],
-        "service" => $serviceLabel,
-        "datetime" => $_POST['date'],
-        "type" => "Walk-In",
-        "payment" => $_POST['payment']
-    ];
-
-    file_put_contents($customersFile, json_encode($existingCustomers, JSON_PRETTY_PRINT));
-}
-    // If this request was made via AJAX, return receipt JSON and stop further output
     if(!empty($_POST['ajax'])){
-        // Clean any buffered output (warnings, notices) so we return pure JSON
         if(ob_get_length() !== false){ @ob_end_clean(); }
-
         $receiptResponse = [
             'name' => $booking['name'],
             'phone' => $booking['phone'],

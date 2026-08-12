@@ -8,6 +8,24 @@ if(!isset($_SESSION['admin'])){
 
 $bookingsFile = __DIR__ . '/functions/json/bookings_data.json';
 $bookings = [];
+$staffSchedule = [];
+$staffMembers = [];
+
+$staffFile = __DIR__ . '/functions/json/staff_data.json';
+if(file_exists($staffFile)){
+    $staffData = json_decode(file_get_contents($staffFile), true);
+    if(is_array($staffData)){
+        foreach($staffData as $staff){
+            if(!is_array($staff) || empty($staff['name'])){
+                continue;
+            }
+            $staffMembers[] = trim((string)$staff['name']);
+        }
+    }
+}
+if(empty($staffMembers)){
+    $staffMembers = ['Anna', 'Rhea', 'Kim'];
+}
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bookings_data'])){
     $postedBookings = json_decode($_POST['bookings_data'], true);
@@ -28,6 +46,49 @@ if(file_exists($bookingsFile)){
     }
 }
 
+function normalizeStaffName($staffString){
+    $staffString = trim((string)$staffString);
+    if(preg_match('/^(.+?)\s*\(/', $staffString, $matches)){
+        return trim($matches[1]);
+    }
+    return $staffString;
+}
+
+function parseBookingDateTime($dateString){
+    $dateString = trim((string)$dateString);
+    $formats = ['Y-m-d h:i A','Y-m-d H:i','Y-m-d H:i A','Y-m-d h:i','Y-m-d H:i:s'];
+    foreach($formats as $format){
+        $dt = DateTime::createFromFormat($format, $dateString);
+        if($dt){
+            return $dt;
+        }
+    }
+    $timestamp = strtotime($dateString);
+    return $timestamp !== false ? new DateTime('@' . $timestamp) : false;
+}
+
+function recordStaffBooking(array &$staffSchedule, string $date, string $staff, string $time, string $name, string $source){
+    if($staff === ''){
+        return;
+    }
+    if(!isset($staffSchedule[$date])){
+        $staffSchedule[$date] = [];
+    }
+    $staffSchedule[$date][] = [
+        'staff' => $staff,
+        'time' => $time,
+        'name' => $name,
+        'source' => $source,
+    ];
+}
+
+if(file_exists($bookingsFile)){
+    $bookings = json_decode(file_get_contents($bookingsFile), true);
+    if(!is_array($bookings)){
+        $bookings = [];
+    }
+}
+
 $customersFile = __DIR__ . '/functions/json/customers_data.json';
 if(file_exists($customersFile)){
     $customers = json_decode(file_get_contents($customersFile), true);
@@ -38,12 +99,7 @@ if(file_exists($customersFile)){
             }
 
             $dtString = trim($customer['datetime']);
-            $dateTime = DateTime::createFromFormat('Y-m-d h:i A', $dtString)
-                ?: DateTime::createFromFormat('Y-m-d H:i', $dtString)
-                ?: DateTime::createFromFormat('Y-m-d H:i A', $dtString)
-                ?: DateTime::createFromFormat('Y-m-d h:i', $dtString)
-                ?: DateTime::createFromFormat('Y-m-d H:i:s', $dtString);
-
+            $dateTime = parseBookingDateTime($dtString);
             if(!$dateTime){
                 continue;
             }
@@ -54,6 +110,7 @@ if(file_exists($customersFile)){
             if($name === ''){
                 $name = 'Guest';
             }
+            $staff = normalizeStaffName($customer['staff'] ?? '');
 
             if(!isset($bookings[$date]) || !is_array($bookings[$date])){
                 $bookings[$date] = [];
@@ -70,6 +127,35 @@ if(file_exists($customersFile)){
             if(!$exists){
                 $bookings[$date][] = ['name' => $name, 'time' => $time];
             }
+            recordStaffBooking($staffSchedule, $date, $staff, $time, $name, $customer['type'] ?? 'Online');
+        }
+    }
+}
+
+$walkinsFile = __DIR__ . '/functions/json/walkins_data.json';
+if(file_exists($walkinsFile)){
+    $walkins = json_decode(file_get_contents($walkinsFile), true);
+    if(is_array($walkins)){
+        foreach($walkins as $walkin){
+            if(!is_array($walkin) || empty($walkin['date']) || empty($walkin['name'])){
+                continue;
+            }
+
+            $dtString = trim($walkin['date']);
+            $dateTime = parseBookingDateTime($dtString);
+            if(!$dateTime){
+                continue;
+            }
+
+            $date = $dateTime->format('Y-m-d');
+            $time = $dateTime->format('g:i A');
+            $name = trim($walkin['name']);
+            if($name === ''){
+                $name = 'Guest';
+            }
+            $staff = normalizeStaffName($walkin['staff'] ?? '');
+
+            recordStaffBooking($staffSchedule, $date, $staff, $time, $name, 'Walk-In');
         }
     }
 }
@@ -127,6 +213,11 @@ if(file_exists($customersFile)){
       <div id="bookingsList" class="bookings-list">No reservations yet.</div>
     </div>
 
+    <div class="modal-staff-schedule" id="modalStaffSchedule">
+      <h4>Staff schedule for this date</h4>
+      <div id="staffScheduleList" class="bookings-list">No staff assignments yet.</div>
+    </div>
+
     <div class="modal-actions">
       <button class="cancel" onclick="closeModal()">Close</button>
     </div>
@@ -138,11 +229,12 @@ if(file_exists($customersFile)){
 
 /* 🔥 FIXED TOGGLE */
 function toggleSidebar(){
-document.getElementById("sidebar").classList.toggle("collapsed");
-document.getElementById("main").classList.toggle("expand");
+    document.getElementById("sidebar").classList.toggle("collapsed");
+    document.getElementById("main").classList.toggle("expand");
 }
 
 let bookings = <?php echo json_encode($bookings); ?>;
+let staffSchedule = <?php echo json_encode($staffSchedule); ?>;
 let selectedDate="";
 let month=new Date().getMonth();
 let year=new Date().getFullYear();
@@ -222,14 +314,26 @@ function closeModal(){
 
 function renderBookingsForDate(date){
     const bookingsList = document.getElementById("bookingsList");
+    const staffScheduleList = document.getElementById("staffScheduleList");
     const dateBookings = bookings[date] || [];
+    const dateStaffSchedule = staffSchedule[date] || [];
+
     if(dateBookings.length === 0){
         bookingsList.innerHTML = '<div class="empty">No reservations yet for this date.</div>';
-        return;
+    } else {
+        bookingsList.innerHTML = dateBookings.map(b => {
+            return `<div class="booking-entry"><span class="booking-time">${b.time}</span><span class="booking-name"><br>${b.name}<br></span></div>`;
+        }).join('');
     }
-    bookingsList.innerHTML = dateBookings.map(b => {
-        return `<div class="booking-entry"><span class="booking-time">${b.time}</span><span class="booking-name"><br>${b.name}<br></span></div>`;
-    }).join('');
+
+    if(dateStaffSchedule.length === 0){
+        staffScheduleList.innerHTML = '<div class="empty">No staff assignments yet.</div>';
+    } else {
+        staffScheduleList.innerHTML = dateStaffSchedule.map(b => {
+            const source = b.source ? ` <span class="booking-source">(${b.source})</span>` : '';
+            return `<div class="booking-entry"><span class="booking-time">${b.time}</span><span class="booking-name">${b.staff}</span><span class="booking-name">${b.name}${source}</span></div>`;
+        }).join('');
+    }
 }
 
 /* INIT */

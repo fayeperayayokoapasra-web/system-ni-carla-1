@@ -3,6 +3,10 @@ session_start();
 
 $message = "";
 $customersFile = __DIR__ . '/assets/json/customers_data.json';
+$baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+if($baseUrl === ''){
+    $baseUrl = '';
+}
 
 function ensureJsonFile($file){
     $folder = dirname($file);
@@ -120,7 +124,7 @@ if(isset($_POST['reset_password'])){
         <button type="submit" name="reset_password">Reset Password</button>
     </form>
 
-    <a class="link" href="customerlogin.php">Back to Login</a>
+    <a class="link" href="<?php echo $baseUrl; ?>/customerlogin.php">Back to Login</a>
 </div>
 </body>
 </html>

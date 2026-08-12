@@ -1,10 +1,32 @@
 /* ===== FORM ===== */
+.main {
+    display: flex !important;
+    gap: 20px !important;
+    margin-left: 220px !important;
+    margin-top: 65px !important;
+    padding: 20px !important;
+    height: calc(100vh - 65px) !important;
+    align-items: stretch !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.main.expanded {
+    margin-left: 60px !important;
+}
+
 .form-box {
     background: white;
-    padding: 25px;
     border-radius: 12px;
-    width: 50%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: none;
+    margin: 0;
 }
 
 .page-title {

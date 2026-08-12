@@ -49,6 +49,12 @@ if(is_array($customers)){
         if(!isset($customer['status']) || !is_string($customer['status'])){
             $customer['status'] = 'upcoming';
         }
+        if(!isset($customer['type']) || !is_string($customer['type']) || trim($customer['type']) === ''){
+            $customer['type'] = 'Online';
+        }
+        if(strtolower(trim($customer['type'])) === 'booking'){
+            $customer['type'] = 'Online';
+        }
     }
     unset($customer);
 }

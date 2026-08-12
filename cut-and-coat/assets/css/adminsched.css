@@ -210,6 +210,63 @@ body {
     overflow-wrap: anywhere;
 }
 
+.modal-bookings,
+.modal-staff-schedule {
+    margin-bottom: 18px;
+}
+
+.modal-bookings h4,
+.modal-staff-schedule h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #064e3b;
+}
+
+.bookings-list {
+    background: #f8fafc;
+    border: 1px solid #d1d5db;
+    border-radius: 14px;
+    padding: 14px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.booking-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 10px 0;
+}
+
+.booking-entry:last-child {
+    border-bottom: none;
+}
+
+.booking-time {
+    font-weight: 700;
+    color: #074f36;
+}
+
+.booking-name {
+    color: #1f2937;
+    font-size: 14px;
+}
+
+.booking-source {
+    color: #6b7280;
+    font-size: 12px;
+    margin-left: 6px;
+}
+
+.empty {
+    color: #4b5563;
+    font-size: 14px;
+    padding: 14px;
+    background: #f3f4f6;
+    border-radius: 12px;
+}
+
 /* OVERLAY */
 .modal {
     position: fixed;
@@ -227,7 +284,8 @@ body {
 
 /* MODAL BOX */
 .modal-box {
-    width: 380px;
+    width: 420px;
+    max-width: 92%;
     background: #ffffff;
     border-radius: 22px;
     padding: 28px 26px;

@@ -1,195 +1,233 @@
 {
-    "totalSales": 372547,
+    "totalSales": 374605,
     "records": [
         {
             "type": "Online",
             "payment": "GCash",
-            "amount": 499
+            "amount": 499,
+            "date": "2026-08-12"
         },
         {
             "type": "Online",
             "payment": "Maya",
-            "amount": 599
+            "amount": 599,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 180
+            "amount": 180,
+            "date": "2026-08-12"
         },
         {
             "type": "Online",
             "payment": "Card",
-            "amount": 799
+            "amount": 799,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 150
+            "amount": 150,
+            "date": "2026-08-12"
         },
         {
             "type": "Online",
             "payment": "Maya",
-            "amount": 300
+            "amount": 300,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 400
+            "amount": 400,
+            "date": "2026-08-12"
         },
         {
             "type": "Online",
             "payment": "GCash",
-            "amount": 499
+            "amount": 499,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 180
+            "amount": 180,
+            "date": "2026-08-12"
         },
         {
             "type": "Online",
             "payment": "Card",
-            "amount": 599
+            "amount": 599,
+            "date": "2026-08-12"
         },
         {
             "type": "Online",
             "payment": "GCash",
-            "amount": 799
+            "amount": 799,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 300
+            "amount": 300,
+            "date": "2026-08-12"
         },
         {
             "type": "Online",
             "payment": "Maya",
-            "amount": 499
+            "amount": 499,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Card",
-            "amount": 150
+            "amount": 150,
+            "date": "2026-08-12"
         },
         {
             "type": "Online",
             "payment": "GCash",
-            "amount": 599
+            "amount": 599,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 2550
+            "amount": 2550,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 650
+            "amount": 650,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 1500
+            "amount": 1500,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 1500
+            "amount": 1500,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 1500
+            "amount": 1500,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 650
+            "amount": 650,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 650
+            "amount": 650,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 650
+            "amount": 650,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 479
+            "amount": 479,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 479
+            "amount": 479,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 479
+            "amount": 479,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 330
+            "amount": 330,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 330
+            "amount": 330,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 330
+            "amount": 330,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 150
+            "amount": 150,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 330
+            "amount": 330,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 150
+            "amount": 150,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 679
+            "amount": 679,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 679
+            "amount": 679,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 679
+            "amount": 679,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 679
+            "amount": 679,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 330
+            "amount": 330,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
             "payment": "Cash",
-            "amount": 679
+            "amount": 679,
+            "date": "2026-08-12"
         },
         {
             "type": "Walk-In",
@@ -832,6 +870,30 @@
             "payment": "Cash",
             "amount": 829,
             "date": "2026-08-06"
+        },
+        {
+            "type": "Customer Booking",
+            "payment": "Cash",
+            "amount": 150,
+            "date": "2026-08-13"
+        },
+        {
+            "type": "Customer Booking",
+            "payment": "Cash",
+            "amount": 150,
+            "date": "2026-08-13"
+        },
+        {
+            "type": "Walk-In",
+            "payment": "Cash",
+            "amount": 330,
+            "date": "2026-08-12"
+        },
+        {
+            "type": "Customer Booking",
+            "payment": "Cash",
+            "amount": 1428,
+            "date": "2026-08-12"
         }
     ]
 }

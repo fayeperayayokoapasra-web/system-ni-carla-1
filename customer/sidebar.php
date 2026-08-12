@@ -25,13 +25,6 @@
     const sidebar = document.getElementById('sidebar');
     const main = document.getElementById('main');
 
-    window.toggleSidebar = function() {
-        if (!sidebar || !main) return;
-        sidebar.classList.toggle('collapsed');
-        main.classList.toggle('expanded');
-        main.classList.toggle('sidebar-collapsed');
-    };
-
     document.addEventListener('DOMContentLoaded', function() {
         if (!sidebar) return;
         const currentPath = window.location.pathname.split('/').pop().toLowerCase();

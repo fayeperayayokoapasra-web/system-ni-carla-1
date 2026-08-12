@@ -618,5 +618,42 @@
         "type": "Walk-In",
         "payment": "Cash",
         "status": "upcoming"
+    },
+    {
+        "name": "Test User",
+        "phone": "09171234567",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure",
+        "datetime": "2026-08-13 10:00",
+        "type": "Booking",
+        "payment": "Cash"
+    },
+    {
+        "name": "Test User",
+        "phone": "09171234567",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure",
+        "datetime": "2026-08-13 10:00",
+        "type": "Booking",
+        "payment": "Cash"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "staff": "AUTO_ASSIGN",
+        "service": "Classic Manicure, Classic Pedicure",
+        "datetime": "2026-08-12 07:00",
+        "type": "Walk-In",
+        "payment": "Cash"
+    },
+    {
+        "name": "Jhazlyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "staff": "AUTO_ASSIGN",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure",
+        "datetime": "2026-08-12 09:00",
+        "type": "Online",
+        "payment": "Cash",
+        "status": "upcoming"
     }
 ]

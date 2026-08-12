@@ -25,12 +25,6 @@ include 'functions/admincustomers_logic.php';
 <h3>Cut & Coat Nail Salon</h3>
 </div>
 
-<div class="topbar">
-<h3>Cut & Coat Nail Salon</h3>
-</div>
-
-
-
 <?php include 'sidebar.php'; ?>
 
 <div class="main" id="main">

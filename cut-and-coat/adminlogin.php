@@ -42,7 +42,7 @@ include 'functions/adminlogin_logic.php';
 </form>
 
 <div class="forgot">
-<a href="#">Forgot Password?</a>
+<a href="adminforgotpassword.php">Forgot Password?</a>
 </div>
 
 </div>

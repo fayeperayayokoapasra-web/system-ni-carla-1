@@ -2120,5 +2120,73 @@
         "reference": "",
         "status": "upcoming",
         "method": "walkin"
+    },
+    {
+        "name": "Test User",
+        "phone": "09171234567",
+        "email": "test@example.com",
+        "date": "2026-08-13 10:00",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure",
+        "services": [
+            "Classic Manicure"
+        ],
+        "total": 150,
+        "payment": "Cash",
+        "reference": "",
+        "status": "upcoming",
+        "method": "customer"
+    },
+    {
+        "name": "Test User",
+        "phone": "09171234567",
+        "email": "test@example.com",
+        "date": "2026-08-13 10:00",
+        "staff": "Anna (Available)",
+        "service": "Classic Manicure",
+        "services": [
+            "Classic Manicure"
+        ],
+        "total": 150,
+        "payment": "Cash",
+        "reference": "",
+        "status": "upcoming",
+        "method": "customer"
+    },
+    {
+        "name": "Julie Anne Jensen",
+        "phone": "0912-345-6789",
+        "email": "juliedino1124@gmail.com",
+        "date": "2026-08-12 07:00",
+        "staff": "Maria (Available)",
+        "services": [
+            "Classic Manicure",
+            "Classic Pedicure"
+        ],
+        "total": 330,
+        "payment": "Cash",
+        "reference": "",
+        "status": "upcoming",
+        "method": "walkin"
+    },
+    {
+        "name": "Jhazlyn Ann Ramos",
+        "phone": "0912-345-6789",
+        "email": "jhazlynramos4@gmail.com",
+        "date": "2026-08-12 09:00",
+        "staff": "John (Available)",
+        "service": "Classic Manicure, Classic Pedicure, Gel Manicure, Gel Pedicure",
+        "services": [
+            "Classic Manicure",
+            "Classic Pedicure",
+            "Gel Manicure",
+            "Gel Pedicure"
+        ],
+        "total": 1428,
+        "payment": "Cash",
+        "reference": "",
+        "status": "upcoming",
+        "type": "Online",
+        "method": "customer"
     }
 ]

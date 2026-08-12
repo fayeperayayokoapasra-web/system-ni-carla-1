@@ -55,6 +55,7 @@ if($submittedDate){
 
 <label>Preferred Staff</label>
 <select name="staff">
+<option value="AUTO_ASSIGN" <?php echo (!isset($_POST['staff']) || $_POST['staff'] === 'AUTO_ASSIGN') ? 'selected' : ''; ?>>Auto-assign available staff</option>
 <option value="" disabled <?php echo empty($_POST['staff']) ? 'selected' : ''; ?>>Select Staff</option>
 <?php
 foreach($_SESSION['staff_status'] as $name => $status){

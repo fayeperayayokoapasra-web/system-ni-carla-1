@@ -184,6 +184,12 @@ button:hover {
     margin-bottom: 10px;
 }
 
+.msg {
+    color: #064e3b;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
 /* FORGOT PASSWORD */
 .forgot {
     margin-top: 10px;

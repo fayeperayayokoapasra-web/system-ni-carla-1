@@ -3,6 +3,10 @@ session_start();
 
 $message = "";
 $customersFile = __DIR__ . '/assets/json/customers_data.json';
+$baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+if($baseUrl === ''){
+    $baseUrl = '';
+}
 
 function ensureJsonFile($file){
     $folder = dirname($file);
@@ -89,11 +93,11 @@ if(isset($_POST['login'])){
 </form>
 
 <div class="toggle">
-<a href="forgotpassword.php">Forgot Password?</a>
+<a href="<?php echo $baseUrl; ?>/forgotpassword.php">Forgot Password?</a>
 </div>
 
 <div class="toggle">
-<a href="customerregister.php">Create new account</a>
+<a href="<?php echo $baseUrl; ?>/customerregister.php">Create new account</a>
 </div>
 
 </div>

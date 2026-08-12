@@ -5,6 +5,36 @@ if(!isset($_SESSION['customer'])){
     header("Location: customerlogin.php");
     exit();
 }
+
+$customersFile = __DIR__ . '/assets/json/customers_data.json';
+
+function ensureJsonFile($file){
+    $folder = dirname($file);
+    if(!is_dir($folder)){
+        mkdir($folder, 0777, true);
+    }
+
+    if(!file_exists($file)){
+        file_put_contents($file, json_encode([], JSON_PRETTY_PRINT));
+    }
+}
+
+function loadCustomers($file){
+    ensureJsonFile($file);
+    $contents = @file_get_contents($file);
+    $data = json_decode($contents, true);
+    return is_array($data) ? $data : [];
+}
+
+$customerName = 'Customer';
+$customers = loadCustomers($customersFile);
+$customerEmail = strtolower($_SESSION['customer']);
+foreach($customers as $customer){
+    if(isset($customer['email']) && strtolower($customer['email']) === $customerEmail){
+        $customerName = $customer['name'] ?? $customerName;
+        break;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +74,7 @@ if(!isset($_SESSION['customer'])){
 <?php include 'sidebar.php'; ?>
 
 <div class="main" id="main">
-<div class="welcome">Welcome, Carla!</div>
+<div class="welcome">Welcome, <?php echo htmlspecialchars($customerName, ENT_QUOTES, 'UTF-8'); ?>!</div>
 
 <div class="top-cards">
 <div class="card"><h4>Frequent Service</h4><p>Gel Polish</p></div>
